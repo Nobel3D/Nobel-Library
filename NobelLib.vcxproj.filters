@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Main">
+      <UniqueIdentifier>{a20dcbd0-a325-4bea-a6f5-f74a1145e5b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stream">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Base">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Math\Vector">
+      <UniqueIdentifier>{74e8bbad-b27d-4e94-89fe-9edda07938d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{9b734718-5be7-4f4a-9e32-cef3ebfc8bdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base\System">
+      <UniqueIdentifier>{32925aa8-09ef-44a5-81db-a42a287db418}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Math\StaticMath.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Polynomial.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Vector\Vector.h">
+      <Filter>Math\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Vector\Vector2.h">
+      <Filter>Math\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Array.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\NString.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="NobelLibCom.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Stream\Stream.h">
+      <Filter>Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="Definitions.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Stream\NFile.h">
+      <Filter>Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\NFileName.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Windows\Console.h">
+      <Filter>Base\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\DateTime.h">
+      <Filter>Base\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\List.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Math\StaticMath.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Polynomial.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Vector\Vector.cpp">
+      <Filter>Math\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Vector\Vector2.cpp">
+      <Filter>Math\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\NString.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Stream\Stream.cpp">
+      <Filter>Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="Stream\NFile.cpp">
+      <Filter>Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\NFileName.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Windows\Console.cpp">
+      <Filter>Base\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\DateTime.cpp">
+      <Filter>Base\System</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
