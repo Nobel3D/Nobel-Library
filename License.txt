@@ -1,0 +1,19 @@
+Nobel-Library
+=============
+
+C++ Classes and more stuff by Luca "Nobel3D" Gasperini
+
+
+
+The NobelLibrary is FREE for educational use. Feel free to use it in your school’s curriculum. Educational institutions can use the NobelLibrary for free even though they’re charging tuition. No additional license is required for faculty or students. 
+Your students are encouraged to use NobelLibrary inside or outside of school to learn game development.
+The NobelLibrary is also FREE for non-commercial use. Feel free to use the NobelLibrary to make any application (game or other stuff) for free distribution. 
+No additional license (beyond the EULA) is required. Just go for it.
+
+If you use NobelLibrary in your business, sell a application created using NobelLibrary, sell services or training and in connection with that business, 
+distribute an application you’ve created using NobelLibrary, or use NobelLibrary in any way to generate revenue, directly or indirectly, in addition to your agreeing to the NobelLibrary EULA, 
+you are required to sign a "NobelLibrary Commercial Use License Agreement".
+
+The NobelLibrary Commercial Use License you can create a games or commercial applications using NobelLibrary for sale or distribution to an end-user or client, 
+or if you are providing services in connection with a NobelLibrary application Instead the license terms for this arrangement are required to pay Luca Gasperini an annual license fee of EURO €100 per right of your software, 
+after you paid, you can distribute a software.
