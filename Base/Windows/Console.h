@@ -4,7 +4,7 @@
 
 namespace NobelLib
 {
-	namespace Systems
+	namespace Sys
 	{
 
 		namespace Windows

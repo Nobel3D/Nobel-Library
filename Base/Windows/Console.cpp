@@ -1,6 +1,6 @@
 #include "Console.h"
 
-using namespace NobelLib::Systems::Windows;
+using namespace NobelLib::Sys::Windows;
 #define m_pszClassName "MyClass"
 NWindow::NWindow()
 {

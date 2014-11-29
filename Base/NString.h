@@ -33,14 +33,16 @@ namespace NobelLib
 		NString Sub(int IndexStart);
 		NString Sub(int IndexStart, int IndexLen);
 
-		bool Replace(const char* strWhere, const char* strWith);
+		NString Replace(const char* str, const char* strReplace);
 		NString toLower();
 		NString toUpper();
 		NString toReverse();
 		int toInt();
+		double toDouble();
 		static NString toHex(int Decimal);
 		static NString toBinary(int Decimal);
 		static NString fromInt(int IntToString);
+		static NString fromDouble(double Convert);
 
 		int getLength();
 		

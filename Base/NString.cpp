@@ -174,6 +174,24 @@ bool NString::Find(const char* char_My)
 	return false;
 }
 
+NString NString::Replace(const char* str, const char* strReplace)
+{
+	NString strChangeble (this->str_Pointer);
+	for (int i = 0; i < this->getLength();i++)
+	if (strChangeble[i]==str[0]) 
+	{
+		if (strChangeble.Sub(i, strlen(str)) == str)
+		{
+			strChangeble = strChangeble.Sub(0, i) + strReplace + strChangeble.Sub( i+strlen(str) );
+		}
+	}
+	return strChangeble;
+}
+
+double NString::toDouble()
+{
+	return atof(this->str_Pointer);
+}
 
 int NString::toInt()
 {
@@ -194,22 +212,28 @@ NString NString::fromInt(int IntToString)
 	char buffer[1024];
 	return NString(_itoa(IntToString, buffer, 10));
 }
+NString NString::fromDouble(double Convert)
+{
+	char buffer[1024];
+	return NString(_gcvt(Convert, 14, buffer));
+	;
+}
 NString NString::Sub(int IndexStart)
 {
-	if (IndexStart<0 || IndexStart>this->str_Length)
+	if (IndexStart<0 || IndexStart>this->getLength())
 		return *this;
 
-	return NString(this->str_Pointer + IndexStart); //This step is very important, I must return the fisical copy of Exit, if not after use of sub() Exit will be deleted, and with it the pointer of char
+	return NString(this->str_Pointer + IndexStart);
 }
 NString NString::Sub(int IndexStart, int IndexLen)
 {
 	NString Exit(this->str_Pointer+IndexStart);
 
-	if (IndexLen > strlen(Exit))
+	if (IndexLen > Exit.getLength())
 		return Sub(IndexStart);
 
 	Exit.str_Pointer[IndexLen] = '\0';
-	return NString(Exit); //This step is very important, I must return the fisical copy of Exit, if not after use of sub() Exit will be deleted, and with it the pointer of char
+	return NString(Exit);
 }
 void NString::Split(const char Splitter, Array<NString> &arrayStr)
 {
@@ -348,4 +372,4 @@ bool NString::operator !=(const char* equal)
 }
 
 
-int NString::getLength(){ return str_Length; }
+int NString::getLength(){ return strlen(this->str_Pointer); }

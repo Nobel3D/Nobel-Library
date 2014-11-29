@@ -25,6 +25,9 @@
     <Filter Include="Base\System">
       <UniqueIdentifier>{32925aa8-09ef-44a5-81db-a42a287db418}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Base\System\NCScript">
+      <UniqueIdentifier>{28fd6f66-1a34-4096-9355-930e92a194ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\StaticMath.h">
@@ -44,9 +47,6 @@
     </ClInclude>
     <ClInclude Include="Base\NString.h">
       <Filter>Base</Filter>
-    </ClInclude>
-    <ClInclude Include="NobelLibCom.h">
-      <Filter>Main</Filter>
     </ClInclude>
     <ClInclude Include="Stream\Stream.h">
       <Filter>Stream</Filter>
@@ -68,6 +68,24 @@
     </ClInclude>
     <ClInclude Include="Base\List.h">
       <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\NCScript\NCScript.h">
+      <Filter>Base\System\NCScript</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\NCScript\NCommand.h">
+      <Filter>Base\System\NCScript</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\NCScript\NResult.h">
+      <Filter>Base\System\NCScript</Filter>
+    </ClInclude>
+    <ClInclude Include="NobelEngine.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\NError.h">
+      <Filter>Base\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\System.h">
+      <Filter>Base\System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +117,18 @@
       <Filter>Base\System</Filter>
     </ClCompile>
     <ClCompile Include="Base\DateTime.cpp">
+      <Filter>Base\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\NCScript\NCScript.cpp">
+      <Filter>Base\System\NCScript</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\NCScript\NCommand.cpp">
+      <Filter>Base\System\NCScript</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\NCScript\NResult.cpp">
+      <Filter>Base\System\NCScript</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\NError.cpp">
       <Filter>Base\System</Filter>
     </ClCompile>
   </ItemGroup>

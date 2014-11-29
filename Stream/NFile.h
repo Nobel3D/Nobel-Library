@@ -18,7 +18,6 @@ namespace NobelLib
 			bool Start;
 
 			bool CanLoad();
-			bool IsStarted();
 			NString getModeOpen(OpenMode _Mode);
 
 		public:
@@ -26,6 +25,8 @@ namespace NobelLib
 			NFile(const char* _Path);
 			bool Open(OpenMode OMode);
 			void Close();
+
+			bool IsStarted();
 
 			void Write();
 			bool Read(void* vpGet, UINT length);
