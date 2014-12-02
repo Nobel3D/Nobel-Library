@@ -4,6 +4,7 @@
 #include "..\DateTime.h"
 #include "..\NString.h"
 #include "NCommand.h"
+#include "..\Windows\Console.h"
 
 namespace NobelLib
 {
@@ -15,22 +16,19 @@ namespace NobelLib
 			{
 			private:
 
-				Array<NCommand> cmdUploaded;
+				Array<NCommand*> cmdUploaded;
 				NString Header;
-				List<NString> Params;
+				List<NResult> Params;
 
-				bool IsVoid;
-				bool IsFuncion;
-				bool IsVarible;
-				bool IsString;
-				bool IsValue;
+				Windows::NConsole* Console;
 
 				int checkSyntax(NString strCommand);
 				int checkCommand();
-			public:
-				NCScript(Array<NCommand>* arrayLibrary);
-				void sendOutput(NString& Message);
 				bool WaitCommand();
+				void Reset();
+			public:
+				NCScript(Array<NCommand*>* arrayLibrary, Windows::NConsole* cmdConsole);
+				int Start();
 			};
 		}
 	}

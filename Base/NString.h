@@ -27,7 +27,7 @@ namespace NobelLib
 		bool Null();
 		static bool Null(const char*  IsEmpty);
 
-		void Split(const char Splitter, Array<NString> &arrayStr);
+		Array<NString> Split(const char Splitter, Array<NString> &arrayStr);
 		bool Find(const NString* str_My);
 		bool Find(const char* char_My);
 		NString Sub(int IndexStart);

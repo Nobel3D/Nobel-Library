@@ -8,18 +8,21 @@ namespace NobelLib
 	{
 		namespace NCScript
 		{
-			enum Type {Value=0, String=1};
 			class NResult
 			{
 			private:
-				Type TypeData;
+				NString name;
+				NString value;
 			public:
-				double value;
-				NString string;
-				NResult(NString get, Type T);
-				NResult(double get);
+				bool forceString = false;
+			
 				NResult(NString get);
+				NResult(double get);
+				NResult(NResult& Other);
+
 				NString getOutput();
+				double toValue();
+				NString toString();
 			};
 		}
 	}

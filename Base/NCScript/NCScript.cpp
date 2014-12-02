@@ -8,10 +8,6 @@ using namespace NobelLib::Sys::NCScript;
 
 #define MAX_SUPPORT_STRING 100
 
-void NCScript::sendOutput(NString& Message)
-{
-	cout << Message << endl;
-}
 
 //void NCScript::addLog(NString& Message)
 //{
@@ -24,13 +20,11 @@ void NCScript::sendOutput(NString& Message)
 //	}
 //}
 
-NCScript::NCScript( Array<NCommand>* arrayCommand)
+NCScript::NCScript( Array<NCommand*>* arrayCommand, Sys::Windows::NConsole* cmdConsole)
 {
-
-		cmdUploaded = *arrayCommand;
-
-	
-		sendOutput(NString("Starting Nobel CScript Console"));
+	this->Console = cmdConsole;
+	Console->sendOutput(NString("Starting Nobel CScript Console: Loading commands..."));
+	cmdUploaded = *arrayCommand;
 }
 
 
@@ -39,19 +33,31 @@ bool NCScript::WaitCommand()
 	char strCommand[MAX_SUPPORT_STRING];
 	cout << (Sys::DateTime::NowTime() + "-> ");
 	cin >> strCommand;
-	if (checkSyntax(strCommand) == 0)
+	int TypeOperation = checkSyntax(strCommand);
+	if (TypeOperation == 1 || TypeOperation == 0) //If function...
 	{
 		int Index = checkCommand();
 		if (Index == -1)
 		{
-			throw "Fail";
+			Console->sendOutput(NString(NString("ERROR: Command \"") + NString(strCommand) + NString("\" not found.")));
 		}
 		else
 		{
-			sendOutput(cmdUploaded[Index].exeCommand().getOutput());
+			if (TypeOperation == 1)
+				cmdUploaded[Index]->loadParams(Params);
+
+			Console->sendOutput(cmdUploaded[Index]->exeCommand().getOutput());
 		}
 	}
+	else if (TypeOperation == 2)
+	{
 
+	}
+	else
+	{
+		Console->sendOutput(NString("ERROR: Wrong Syntax."));
+	}
+	Reset();
 	return true;
 }
 
@@ -59,36 +65,52 @@ int NCScript::checkSyntax(NString strCommand)
 {
 	if (strCommand.Find("(") && strCommand.Find(")")) /*if this is funcion...*/
 	{
-		IsFuncion = true;
 		Array<NString> arraySplit;
 		strCommand.Split('(', arraySplit);
 		Header = arraySplit[0];
-		arraySplit[1].Replace(")", "\0");
+		arraySplit[1] = arraySplit[1].Replace(")", "\0");
 		if (arraySplit[1].Null())
 		{
-			IsVoid = true;
+			return 0;
 		}
 		else if (arraySplit[1].Find(","))
 		{
 			arraySplit[1].Split(',', arraySplit);
 			for (int i = 0; i < arraySplit.SizeArray(); i++)
-				Params.addItem(arraySplit[i]);
+			{
+				Params.addItem(NResult(arraySplit[i]));
+			}
+			return 1;
 		}
 	}
 	else if (!strCommand.Find("(") && !strCommand.Find(")"))/*if this is variable*/
 	{
-		IsVarible = true;
 		Header = strCommand;
+		return 2;
 	}
-	return 0;
+	return -1;
 }
 
 int NCScript::checkCommand()
 {
 	for (int i = 0; i < cmdUploaded.SizeArray(); i++)
-	if (cmdUploaded[i] == this->Header)
+	if (*cmdUploaded[i] == this->Header)
 	{
 		return i;
 	}
 	return -1;
+}
+
+int NCScript::Start()
+{
+	while (WaitCommand())
+	{
+		continue;
+	}
+	return 0;
+}
+
+void NCScript::Reset()
+{
+	Params.Clear();
 }

@@ -22,6 +22,7 @@ namespace NobelLib
 				NCommand();
 				NCommand(NCommand& oth);
 				virtual NResult exeCommand() = 0;
+				void loadParams(List<NResult> listLoad);
 
 				bool operator==(NString& strHeader);
 				bool operator!=(NString& strHeader);

@@ -1,5 +1,5 @@
 #pragma once
-
+#include <Windows.h>
 namespace NobelLib
 {
 	namespace Sys

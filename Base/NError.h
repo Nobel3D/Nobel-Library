@@ -9,8 +9,10 @@ namespace NobelLib
 		class NError
 		{
 		private: 
+			NString* strError;
 		public:
-			NError();
+			NError(NString& stringMessage);
+			void Show();
 		};
 	}
 }

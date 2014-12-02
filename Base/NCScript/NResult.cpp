@@ -3,32 +3,35 @@
 using namespace NobelLib::Sys::NCScript;
 using namespace NobelLib;
 
-NResult::NResult(NString get, Type T)
+NResult::NResult(NString get)
 {
-	if (T == Value)
-		value = get.toDouble();
-	if (T == String)
-		string = get;
+	forceString = false;
+
+	if (get.Find("\""))
+		forceString = true;
+
+	value = get;
 }
 NResult::NResult(double get)
 {
-	TypeData = Value;
-	value = get;
-}
-NResult::NResult(NString get)
-{
-	TypeData = String;
-		string = get;
+	value = NString::fromDouble(get);
 }
 
+NResult::NResult(NResult& Other)
+{
+	this->value = Other.value;
+}
 NString NResult::getOutput()
 {
-	if (TypeData == String)
-	{
-		return this->string;
-	}
-	if (TypeData == Value)
-	{
-		return NString::fromDouble(this->value);
-	}
+		return this->value;
+}
+
+double NResult::toValue()
+{
+	return this->value.toDouble();
+}
+NString NResult::toString()
+{
+	if (forceString)
+		return this->value;
 }

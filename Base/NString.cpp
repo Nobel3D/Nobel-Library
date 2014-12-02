@@ -235,23 +235,25 @@ NString NString::Sub(int IndexStart, int IndexLen)
 	Exit.str_Pointer[IndexLen] = '\0';
 	return NString(Exit);
 }
-void NString::Split(const char Splitter, Array<NString> &arrayStr)
+Array<NString> NString::Split(const char Splitter, Array<NString> &arrayStr)
 {
+	NString* strSafe = new NString(*this);
 	arrayStr.Clear();
 	arrayStr.New(1);
 	int memoryCount=0; //char counter
 	int slotCount=1; //counter for next element
-		for(int i=0; i<this->str_Length;i++)
+		for(int i=0; i<strSafe->str_Length;i++)
 		{
-			if (this->str_Pointer[i] == Splitter)
+			if (strSafe->str_Pointer[i] == Splitter)
 			{
-				arrayStr[slotCount-1] = NString(this->Sub(memoryCount, i-memoryCount));
+				arrayStr[slotCount-1] = NString(strSafe->Sub(memoryCount, i-memoryCount));
 				slotCount++;
 				arrayStr.expArray(slotCount);
 				memoryCount=i+1;
 			}
 		}
-		arrayStr[slotCount-1] = NString(this->Sub(memoryCount));
+		arrayStr[slotCount-1] = NString(strSafe->Sub(memoryCount));
+		return arrayStr;
 }
 
 NString NString::toLower()
