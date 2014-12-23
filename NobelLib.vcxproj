@@ -92,6 +92,7 @@
     <ClInclude Include="Base\System.h" />
     <ClInclude Include="Base\Windows\Console.h" />
     <ClInclude Include="Definitions.h" />
+    <ClInclude Include="Graphics\Form.h" />
     <ClInclude Include="Math\Polynomial.h" />
     <ClInclude Include="Math\StaticMath.h" />
     <ClInclude Include="Math\Vector\Vector.h" />
@@ -109,6 +110,7 @@
     <ClCompile Include="Base\NFileName.cpp" />
     <ClCompile Include="Base\NString.cpp" />
     <ClCompile Include="Base\Windows\Console.cpp" />
+    <ClCompile Include="Graphics\Form.cpp" />
     <ClCompile Include="Math\Polynomial.cpp" />
     <ClCompile Include="Math\StaticMath.cpp" />
     <ClCompile Include="Math\Vector\Vector.cpp" />

@@ -33,6 +33,7 @@ namespace NobelLib
 		NString Sub(int IndexStart);
 		NString Sub(int IndexStart, int IndexLen);
 
+		NString Trim();
 		NString Replace(const char* str, const char* strReplace);
 		NString toLower();
 		NString toUpper();

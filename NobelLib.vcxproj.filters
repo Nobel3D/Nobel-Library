@@ -87,6 +87,9 @@
     <ClInclude Include="Base\System.h">
       <Filter>Base\System</Filter>
     </ClInclude>
+    <ClInclude Include="Graphics\Form.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\StaticMath.cpp">
@@ -130,6 +133,9 @@
     </ClCompile>
     <ClCompile Include="Base\NError.cpp">
       <Filter>Base\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Form.cpp">
+      <Filter>Graphics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

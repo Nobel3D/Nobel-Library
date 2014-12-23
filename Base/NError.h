@@ -1,6 +1,7 @@
 #pragma once
 
 #include "NString.h"
+#include "Windows\Console.h"
 
 namespace NobelLib
 {
@@ -9,9 +10,10 @@ namespace NobelLib
 		class NError
 		{
 		private: 
-			NString* strError;
+			NString strError;
+			Sys::Windows::NConsole* Console;
 		public:
-			NError(NString& stringMessage);
+			NError(NString stringMessage, NobelLib::Sys::Windows::NConsole* ptrConsole);
 			void Show();
 		};
 	}

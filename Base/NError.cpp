@@ -1,18 +1,19 @@
 #include "NError.h"
 #include "System.h"
 
+
 using namespace NobelLib::Sys;
 using namespace NobelLib;
 
-NError::NError(NString& stringMessage)
+NError::NError(NString stringMessage, Windows::NConsole* ptrConsole)
 {
-	strError = &stringMessage;
+	this->Console = ptrConsole;
+	strError = stringMessage;
 }
 
 void NError::Show()
 {
-	if (SystemType::Console)
-	{
-		
-	}
+		Console->sendOutput(this->strError);
+		Console->Wait();
+		exit(-1);
 }

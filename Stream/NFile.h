@@ -1,4 +1,4 @@
-
+#pragma once
 #include "..\Base\NString.h"
 #include "..\Base\NFileName.h"
 #include "Stream.h"

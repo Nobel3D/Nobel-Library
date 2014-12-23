@@ -75,10 +75,6 @@ NString& NString::addString(const char* add)
 	this->str_Pointer[copy] = '\0';
 	this->str_Length = oldLength + strlen(add);
 
-	if (!this->Null(add))
-	{
-		delete[] oldPointer;
-	}
 	return *this;
 }
 
@@ -172,6 +168,24 @@ bool NString::Find(const char* char_My)
 	}
 	}
 	return false;
+}
+
+NString NString::Trim()
+{
+	char* szOffset = this->str_Pointer;
+
+
+	while (*szOffset == ' ')
+	{
+		szOffset++;
+	}
+	for (int i = strlen(szOffset) - 1; i >= 0; i--) 
+		if (szOffset[i] != ' ')
+		{
+			szOffset[i + 1] = '\0';
+			break;
+		}
+	return NString(szOffset);
 }
 
 NString NString::Replace(const char* str, const char* strReplace)
@@ -339,7 +353,7 @@ bool NString::Equal(const char* Compare)
 {
 	int trueCount = 0;
 	int compareLength = strlen(Compare);
-	bool result;
+	bool result = false;
 
 	if (compareLength == this->str_Length)
 	{

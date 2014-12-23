@@ -10,12 +10,14 @@
 #include "Base\NFileName.h"
 // BASE --> SYSTEM INCLUDE
 #include "Base\DateTime.h"
+#include "Base\NError.h"
+#include "Base\Windows\Console.h"
 // BASE --> SYSTEM --> NCSCRIPT INCLUDE
 #include "Base\NCScript\NCScript.h"
 #include "Base\NCScript\NCommand.h"
 #include "Base\NCScript\NResult.h"
-// BASE --> SYSTEM --> WINDOWS INCLUDE
-#include "Base\Windows\Console.h"
+//GRAPHICS INCLUDE
+#include "Graphics\Form.h"
 //STREAM INCLUDE
 #include "Stream\Stream.h"
 #include "Stream\NFile.h"
