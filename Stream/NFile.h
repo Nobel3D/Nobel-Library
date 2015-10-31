@@ -1,6 +1,5 @@
 #pragma once
 #include "..\Base\NString.h"
-#include "..\Base\NFileName.h"
 #include "Stream.h"
 #include <stdio.h>
 
@@ -12,7 +11,7 @@ namespace NobelLib
 		class NFile : public Stream
 		{
 		private:
-			NFileName* Path;
+			NString Path;
 			FILE* LinkFile;
 			OpenMode Mode;
 			bool Start;

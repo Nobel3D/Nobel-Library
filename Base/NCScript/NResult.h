@@ -4,33 +4,30 @@
 
 namespace NobelLib
 {
-	namespace Sys
+	namespace NCS
 	{
-		namespace NCScript
+		class NResult
 		{
-			class NResult
-			{
-			private:
-				NString name;
-				NString value;
-			public:
-				bool forceString = false;
-			
-				NResult(NString get);
-				NResult(double get);
-				NResult(NResult& Other);
-				NResult(NString get, NString strName);
-				NResult(double get, NString strName);
+		private:
+			NString name;
+			NString value;
+		public:
+			bool forceString = false;
 
-				bool compareName(NString other);
-				bool compareValue(NString other);
-				NString getOutput();
-				double toValue();
-				NString toString();
+			NResult(NString get);
+			NResult(double get);
+			NResult(NResult& Other);
+			NResult(NString get, NString strName);
+			NResult(double get, NString strName);
 
-				bool operator==(NResult& Compare);
-				bool operator!=(NResult& Compare);
-			};
-		}
+			bool compareName(NString other);
+			bool compareValue(NString other);
+			NString getOutput();
+			double toValue();
+			NString toString();
+
+			bool operator==(NResult& Compare);
+			bool operator!=(NResult& Compare);
+		};
 	}
 }

@@ -1,6 +1,6 @@
 #include "NResult.h"
 
-using namespace NobelLib::Sys::NCScript;
+using namespace NobelLib::NCS;
 using namespace NobelLib;
 
 NResult::NResult(NString get)

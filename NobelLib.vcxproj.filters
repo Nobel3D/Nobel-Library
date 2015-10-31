@@ -22,11 +22,11 @@
     <Filter Include="Graphics">
       <UniqueIdentifier>{9b734718-5be7-4f4a-9e32-cef3ebfc8bdf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Base\System">
-      <UniqueIdentifier>{32925aa8-09ef-44a5-81db-a42a287db418}</UniqueIdentifier>
+    <Filter Include="Management">
+      <UniqueIdentifier>{e837924a-cb83-4f34-bb6c-56ba84291f60}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Base\System\NCScript">
-      <UniqueIdentifier>{28fd6f66-1a34-4096-9355-930e92a194ac}</UniqueIdentifier>
+    <Filter Include="Base\NCScript">
+      <UniqueIdentifier>{32925aa8-09ef-44a5-81db-a42a287db418}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -57,37 +57,58 @@
     <ClInclude Include="Stream\NFile.h">
       <Filter>Stream</Filter>
     </ClInclude>
-    <ClInclude Include="Base\NFileName.h">
-      <Filter>Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\Windows\Console.h">
-      <Filter>Base\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\DateTime.h">
-      <Filter>Base\System</Filter>
-    </ClInclude>
     <ClInclude Include="Base\List.h">
       <Filter>Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\NCScript\NCScript.h">
-      <Filter>Base\System\NCScript</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\NCScript\NCommand.h">
-      <Filter>Base\System\NCScript</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\NCScript\NResult.h">
-      <Filter>Base\System\NCScript</Filter>
     </ClInclude>
     <ClInclude Include="NobelEngine.h">
       <Filter>Main</Filter>
     </ClInclude>
-    <ClInclude Include="Base\NError.h">
-      <Filter>Base\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\System.h">
-      <Filter>Base\System</Filter>
-    </ClInclude>
     <ClInclude Include="Graphics\Form.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Point.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\VideoMode.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\OpenGL.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\NFloat.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Management\Error.h">
+      <Filter>Management</Filter>
+    </ClInclude>
+    <ClInclude Include="Management\Log.h">
+      <Filter>Management</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\NCScript\NCommand.h">
+      <Filter>Base\NCScript</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\NCScript\NCScript.h">
+      <Filter>Base\NCScript</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\NCScript\NResult.h">
+      <Filter>Base\NCScript</Filter>
+    </ClInclude>
+    <ClInclude Include="Stream\NFileName.h">
+      <Filter>Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="Management\DateTime.h">
+      <Filter>Management</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\NCScript\Console.h">
+      <Filter>Base\NCScript</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\NCScript\NError.h">
+      <Filter>Base\NCScript</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\NCScript\System.h">
+      <Filter>Base\NCScript</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\NMessageBox.h">
       <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
@@ -113,29 +134,64 @@
     <ClCompile Include="Stream\NFile.cpp">
       <Filter>Stream</Filter>
     </ClCompile>
-    <ClCompile Include="Base\NFileName.cpp">
-      <Filter>Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\Windows\Console.cpp">
-      <Filter>Base\System</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\DateTime.cpp">
-      <Filter>Base\System</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\NCScript\NCScript.cpp">
-      <Filter>Base\System\NCScript</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\NCScript\NCommand.cpp">
-      <Filter>Base\System\NCScript</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\NCScript\NResult.cpp">
-      <Filter>Base\System\NCScript</Filter>
-    </ClCompile>
-    <ClCompile Include="Base\NError.cpp">
-      <Filter>Base\System</Filter>
-    </ClCompile>
     <ClCompile Include="Graphics\Form.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Graphics\Point.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\VideoMode.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\OpenGL.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\NFloat.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Management\Error.cpp">
+      <Filter>Management</Filter>
+    </ClCompile>
+    <ClCompile Include="Management\Log.cpp">
+      <Filter>Management</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\NCScript\NCommand.cpp">
+      <Filter>Base\NCScript</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\NCScript\NCScript.cpp">
+      <Filter>Base\NCScript</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\NCScript\NResult.cpp">
+      <Filter>Base\NCScript</Filter>
+    </ClCompile>
+    <ClCompile Include="Stream\NFileName.cpp">
+      <Filter>Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="Management\DateTime.cpp">
+      <Filter>Management</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\NCScript\Console.cpp">
+      <Filter>Base\NCScript</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\NCScript\NError.cpp">
+      <Filter>Base\NCScript</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\NMessageBox.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ProjectLog.txt">
+      <Filter>Main</Filter>
+    </Text>
+    <Text Include="Graphics\VarRule.txt">
+      <Filter>Main</Filter>
+    </Text>
+    <Text Include="Graphics\TODO.txt">
+      <Filter>Main</Filter>
+    </Text>
+    <Text Include="Graphics\Errors.txt">
+      <Filter>Main</Filter>
+    </Text>
   </ItemGroup>
 </Project>

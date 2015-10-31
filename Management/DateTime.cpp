@@ -1,7 +1,8 @@
 #include "DateTime.h"
 #include <ctime>
 
-using namespace NobelLib::Sys;
+using namespace NobelLib::Management;
+using namespace NobelLib;
 
 DateTime::DateTime()
 {

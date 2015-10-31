@@ -1,0 +1,33 @@
+Some variables are standardized and so you'll see this format:
+
+<TypeVariable>_<TypeReturn><NameVariable> Ex: txt_bCreate  
+
+List of possible names:
+
+Type Variable:
+scr (screen)
+str (string)
+stm (stream)
+txt (files)
+gl (opengl)
+form (windows form)
+time (time)
+err (error)
+log (logs)
+ncs (ncscript)
+msgb (messagebox)
+ex (exception)
+res (resource files)
+
+Type Return:
+b (bool)
+i (int)
+f (float)
+s (string)
+c (generic class)
+r (resource file)
+x (exception)
+n (enumeration)
+<nothing> (funcion void)
+
+Name Variable is a short description about the variable

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Array.h"
+#include <tchar.h>
 
 namespace NobelLib
 {
@@ -40,8 +41,10 @@ namespace NobelLib
 		NString toReverse();
 		int toInt();
 		double toDouble();
+		wchar_t* toUnicode();
 		static NString toHex(int Decimal);
 		static NString toBinary(int Decimal);
+		static NString fromUnicode(wchar_t* struni);
 		static NString fromInt(int IntToString);
 		static NString fromDouble(double Convert);
 

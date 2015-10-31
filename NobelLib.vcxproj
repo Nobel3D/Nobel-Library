@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -14,18 +14,19 @@
     <ProjectGuid>{5E1D2693-A211-4152-9520-5DF1076237F8}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>NobelLib</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -42,7 +43,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IntDir>$(Configuration)\Tmp</IntDir>
-    <TargetExt>.dll</TargetExt>
+    <TargetExt>.lib</TargetExt>
+    <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.ilk;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
+    <IncludePath>E:\Nobel3D\Desktop\Programming\Project\Middleware\Glew\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -59,6 +62,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glew32.lib;opengl32.lib;uxtheme.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\Nobel3D\Desktop\Programming\Project\Middleware\Glew</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -81,42 +86,62 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Base\Array.h" />
-    <ClInclude Include="Base\DateTime.h" />
     <ClInclude Include="Base\List.h" />
+    <ClInclude Include="Base\NCScript\Console.h" />
     <ClInclude Include="Base\NCScript\NCommand.h" />
     <ClInclude Include="Base\NCScript\NCScript.h" />
+    <ClInclude Include="Base\NCScript\NError.h" />
     <ClInclude Include="Base\NCScript\NResult.h" />
-    <ClInclude Include="Base\NError.h" />
-    <ClInclude Include="Base\NFileName.h" />
+    <ClInclude Include="Base\NCScript\System.h" />
     <ClInclude Include="Base\NString.h" />
-    <ClInclude Include="Base\System.h" />
-    <ClInclude Include="Base\Windows\Console.h" />
     <ClInclude Include="Definitions.h" />
     <ClInclude Include="Graphics\Form.h" />
+    <ClInclude Include="Graphics\NMessageBox.h" />
+    <ClInclude Include="Graphics\OpenGL.h" />
+    <ClInclude Include="Graphics\Point.h" />
+    <ClInclude Include="Graphics\VideoMode.h" />
+    <ClInclude Include="Management\DateTime.h" />
+    <ClInclude Include="Management\Error.h" />
+    <ClInclude Include="Management\Log.h" />
+    <ClInclude Include="Math\NFloat.h" />
     <ClInclude Include="Math\Polynomial.h" />
     <ClInclude Include="Math\StaticMath.h" />
     <ClInclude Include="Math\Vector\Vector.h" />
     <ClInclude Include="Math\Vector\Vector2.h" />
     <ClInclude Include="NobelEngine.h" />
     <ClInclude Include="Stream\NFile.h" />
+    <ClInclude Include="Stream\NFileName.h" />
     <ClInclude Include="Stream\Stream.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Base\DateTime.cpp" />
+    <ClCompile Include="Base\NCScript\Console.cpp" />
     <ClCompile Include="Base\NCScript\NCommand.cpp" />
     <ClCompile Include="Base\NCScript\NCScript.cpp" />
+    <ClCompile Include="Base\NCScript\NError.cpp" />
     <ClCompile Include="Base\NCScript\NResult.cpp" />
-    <ClCompile Include="Base\NError.cpp" />
-    <ClCompile Include="Base\NFileName.cpp" />
     <ClCompile Include="Base\NString.cpp" />
-    <ClCompile Include="Base\Windows\Console.cpp" />
     <ClCompile Include="Graphics\Form.cpp" />
+    <ClCompile Include="Graphics\NMessageBox.cpp" />
+    <ClCompile Include="Graphics\OpenGL.cpp" />
+    <ClCompile Include="Graphics\Point.cpp" />
+    <ClCompile Include="Graphics\VideoMode.cpp" />
+    <ClCompile Include="Management\DateTime.cpp" />
+    <ClCompile Include="Management\Error.cpp" />
+    <ClCompile Include="Management\Log.cpp" />
+    <ClCompile Include="Math\NFloat.cpp" />
     <ClCompile Include="Math\Polynomial.cpp" />
     <ClCompile Include="Math\StaticMath.cpp" />
     <ClCompile Include="Math\Vector\Vector.cpp" />
     <ClCompile Include="Math\Vector\Vector2.cpp" />
     <ClCompile Include="Stream\NFile.cpp" />
+    <ClCompile Include="Stream\NFileName.cpp" />
     <ClCompile Include="Stream\Stream.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Graphics\Errors.txt" />
+    <Text Include="Graphics\TODO.txt" />
+    <Text Include="Graphics\VarRule.txt" />
+    <Text Include="ProjectLog.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

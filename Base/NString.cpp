@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <string.h>
+#include <tchar.h>
 #include "NString.h"
 #include "Array.h"
 
@@ -292,6 +293,36 @@ NString::operator const char *()
 NString::operator const char *() const
 {
   return this->str_Pointer;
+}
+
+wchar_t* NString::toUnicode()
+{
+	int sizeTCHAR = strlen(this->str_Pointer) + 1;
+	wchar_t* newt = new wchar_t[sizeTCHAR];
+	for (int i = 0; i < sizeTCHAR; i++)
+		newt[i] = _T('\0');
+
+	char * ct = new char[sizeTCHAR];
+	for (int i = 0; i < sizeTCHAR; i++)
+		ct[i] = '\0';
+
+	mbstowcs((wchar_t *)newt, this->str_Pointer, sizeTCHAR - 1);
+	return newt;
+}
+NString NString::fromUnicode(wchar_t* struni)
+{
+	int size = wcslen(struni) + 1;
+	TCHAR* newt = new TCHAR[size];
+	for (int i = 0; i < size; i++)
+		newt[i] = _T('\0');
+
+	char * ct = new char[size];
+	for (int i = 0; i < size; i++)
+		ct[i] = '\0';
+
+	wcstombs(ct, (wchar_t *)struni, size - 1);
+
+	return ct;
 }
 
 NString& NString::operator =(const char* newChar)

@@ -1,7 +1,7 @@
 #include "Console.h"
 #include <iostream>
 
-using namespace NobelLib::Sys::Windows;
+using namespace NobelLib::NCS;
 using namespace NobelLib;
 
 #define MAX_SUPPORT_STRING 100

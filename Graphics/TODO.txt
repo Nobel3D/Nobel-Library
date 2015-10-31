@@ -1,0 +1,8 @@
+/* 30/10/2015 */
+- Manage Error and log class DONE
+---Add MessageBox class DONE
+---Review DateTime DONE
+- NString operator + doesnt work
+- Review all code
+- check windowprocess
+- add funcion to Form

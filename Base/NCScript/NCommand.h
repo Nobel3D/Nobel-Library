@@ -6,29 +6,26 @@
 
 namespace NobelLib
 {
-	namespace Sys
+	namespace NCS
 	{
-		namespace NCScript
+		class NCommand
 		{
-			class NCommand
-			{
-			protected:
-				NString Header;
-				List<NResult> Params;
-				bool IsVoid = false;
-				bool IsFuncion = false;
-				bool IsVarible = false;
-			public:
-				NCommand();
-				NCommand(NCommand& oth);
-				virtual NResult exeCommand() = 0;
-				void loadParams(List<NResult> listLoad);
+		protected:
+			NString Header;
+			List<NResult> Params;
+			bool IsVoid = false;
+			bool IsFuncion = false;
+			bool IsVarible = false;
+		public:
+			NCommand();
+			NCommand(NCommand& oth);
+			virtual NResult exeCommand() = 0;
+			void loadParams(List<NResult> listLoad);
 
-				NString getName();
+			NString getName();
 
-				bool operator==(NString& strHeader);
-				bool operator!=(NString& strHeader);
-			};
-		}
+			bool operator==(NString& strHeader);
+			bool operator!=(NString& strHeader);
+		};
 	}
 }

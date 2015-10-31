@@ -6,12 +6,12 @@ using namespace NobelLib;
 
 NFile::NFile(NString& _Path) : Stream(_Path)
 {
-	Path = new NFileName(_Path);
+	Path =  _Path;
 	Start = false;
 }
 NFile::NFile(const char* _Path) : Stream(_Path)
 {
-	Path = new NFileName(_Path);
+	Path = NString(_Path);
 	Start = false;
 }
 bool NFile::Open(OpenMode OMode)
@@ -20,7 +20,7 @@ bool NFile::Open(OpenMode OMode)
 	{
 		if (IsStarted() == false && CanLoad())
 		{
-			LinkFile = fopen(*Path, "r");
+			LinkFile = fopen(Path, "r");
 			Mode = OMode;
 			Start = true;
 			return true;
@@ -32,7 +32,7 @@ bool NFile::Open(OpenMode OMode)
 	{
 		if (IsStarted() == false)
 		{
-			LinkFile = fopen(*Path, getModeOpen(OMode));
+			LinkFile = fopen(Path, getModeOpen(OMode));
 			Mode = OMode;
 			Start = true;
 			return true;
@@ -43,7 +43,7 @@ bool NFile::Open(OpenMode OMode)
 }
 bool NFile::CanLoad()
 {
-	if (FILE *file = fopen(*Path, "r")) {
+	if (FILE *file = fopen(Path, "r")) {
 		fclose(file);
 		return true;
 	}

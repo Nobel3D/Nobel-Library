@@ -1,0 +1,4 @@
+List of NobelLib's errors code
+
+0 = null error
+10 = log fail to write

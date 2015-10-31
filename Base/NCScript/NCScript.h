@@ -1,18 +1,16 @@
 #pragma once
 
-#include "..\System.h"
-#include "..\DateTime.h"
+#include "System.h"
+#include "..\..\Management\DateTime.h"
 #include "..\NString.h"
 #include "NCommand.h"
-#include "..\NError.h"
+#include "NError.h"
 #include "..\..\Stream\NFile.h"
-#include "..\Windows\Console.h"
+#include "Console.h"
 
 namespace NobelLib
 {
-	namespace Sys
-	{
-		namespace NCScript
+		namespace NCS
 		{
 			class NCScript
 			{
@@ -23,7 +21,7 @@ namespace NobelLib
 				List<NResult> Params;
 				List<NResult> Variables;
 
-				Windows::NConsole* Console;
+				NConsole* Console;
 
 				void addLog(NString strMessage);
 				int indexVariable(NString nameVariable);
@@ -33,10 +31,9 @@ namespace NobelLib
 				bool WaitCommand();
 				void Reset();
 			public:
-				NCScript(Array<NCommand*>* arrayLibrary, Windows::NConsole* cmdConsole);
+				NCScript(Array<NCommand*>* arrayLibrary, NConsole* cmdConsole);
 				~NCScript();
 				int Start();
 			};
 		}
-	}
 }

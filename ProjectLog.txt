@@ -1,0 +1,12 @@
+/* 29/10/2015 */
+Start writing Project Log for NobelLib
+Revisited jerarchy of the project (Modifiched paths and namespaces)
+Added Error handler and Log handler classes from VisualNobel (Error.h / Log.h)
+
+/* 30/10/2015 */
+Added file VarRule.txt
+Revisited e ported Error and Log classes (Error.h / Log.h)
+Added class NMessageBox and his enumeration (NMessageBox.h)
+Revisited NFileName class (NFileName.h)
+Added file TODO.txt
+Added file Errors.txt

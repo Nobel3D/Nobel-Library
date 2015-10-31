@@ -3,21 +3,27 @@
 //MATH INCLUDE
 #include "Math\Vector\Vector.h"
 #include "Math\StaticMath.h"
+#include "Math\NFloat.h"
 //BASE INCLUDE
 #include "Base\Array.h"
 #include "Base\List.h"
 #include "Base\NString.h"
-#include "Base\NFileName.h"
-// BASE --> SYSTEM INCLUDE
-#include "Base\DateTime.h"
-#include "Base\NError.h"
-#include "Base\Windows\Console.h"
-// BASE --> SYSTEM --> NCSCRIPT INCLUDE
+// BASE --> NCSCRIPT INCLUDE
 #include "Base\NCScript\NCScript.h"
 #include "Base\NCScript\NCommand.h"
 #include "Base\NCScript\NResult.h"
+#include "Base\NCScript\NError.h"
+#include "Base\NCScript\Console.h"
+//MANAGEMENT INCLUDE
+#include "Management\DateTime.h"
+#include "Management\Error.h"
+#include "Management\Log.h"
 //GRAPHICS INCLUDE
 #include "Graphics\Form.h"
+#include "Graphics\OpenGL.h"
+#include "Graphics\Point.h"
+#include "Graphics\VideoMode.h"
 //STREAM INCLUDE
 #include "Stream\Stream.h"
 #include "Stream\NFile.h"
+#include "Stream\NFileName.h"

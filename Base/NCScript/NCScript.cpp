@@ -4,16 +4,17 @@
 using namespace std;
 
 using namespace NobelLib;
-using namespace NobelLib::Sys::NCScript;
+using namespace NobelLib::NCS;
+using namespace NobelLib::Management;
 
-NCScript::NCScript( Array<NCommand*>* arrayCommand, Sys::Windows::NConsole* cmdConsole)
+NCScript::NCScript( Array<NCommand*>* arrayCommand, NConsole* cmdConsole)
 {
 	this->fileLog = new IO::NFile("NLog.txt");
 	this->fileLog->Open(IO::Append);
 	addLog("[SYS] Loaded Logs stream!");
 	this->Console = cmdConsole;
 	addLog("[SYS] Loading console: WIN32");
-	Console->setColor(Windows::Black, Windows::LGreen);
+	Console->setColor(Black, LGreen);
 	Console->sendOutput(NString("Starting Nobel CScript Console: Loading commands..."));
 	cmdUploaded = *arrayCommand;
 	logCommands();
@@ -21,14 +22,14 @@ NCScript::NCScript( Array<NCommand*>* arrayCommand, Sys::Windows::NConsole* cmdC
 
 void NCScript::addLog(const NString strMessage)
 {
-	this->fileLog->WriteLine(Sys::DateTime::NowTime() + " -> " + strMessage);
+	this->fileLog->WriteLine(DateTime::NowTime() + " -> " + strMessage);
 }
 
 bool NCScript::WaitCommand()
 {
 	char charCommand[250];
 	NString strCommand;
-	cout << (Sys::DateTime::NowTime() + "-> ");
+	cout << (DateTime::NowTime() + "-> ");
 	cin >> charCommand;
 
 	strCommand = charCommand;

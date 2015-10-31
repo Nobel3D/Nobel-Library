@@ -1,11 +1,11 @@
 #pragma once
 
 #include "..\Definitions.h"
-#include "NString.h"
+#include "..\Base\NString.h"
 
 namespace NobelLib
 {
-	namespace Sys
+	namespace Management
 	{
 		class DateTime
 		{

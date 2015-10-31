@@ -2,10 +2,10 @@
 #include "System.h"
 
 
-using namespace NobelLib::Sys;
+using namespace NobelLib::NCS;
 using namespace NobelLib;
 
-NError::NError(NString stringMessage, Windows::NConsole* ptrConsole)
+NError::NError(NString stringMessage, NConsole* ptrConsole)
 {
 	this->Console = ptrConsole;
 	strError = stringMessage;

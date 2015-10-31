@@ -3,7 +3,7 @@
 #include "NResult.h"
 
 using namespace NobelLib;
-using namespace NobelLib::Sys::NCScript;
+using namespace NobelLib::NCS;
 
 NCommand::NCommand()
 {
