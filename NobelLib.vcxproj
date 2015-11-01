@@ -138,10 +138,10 @@
     <ClCompile Include="Stream\Stream.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Graphics\Errors.txt" />
-    <Text Include="Graphics\TODO.txt" />
-    <Text Include="Graphics\VarRule.txt" />
+    <Text Include="Errors.txt" />
     <Text Include="ProjectLog.txt" />
+    <Text Include="TODO.txt" />
+    <Text Include="VarRule.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

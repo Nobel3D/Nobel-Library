@@ -184,13 +184,13 @@
     <Text Include="ProjectLog.txt">
       <Filter>Main</Filter>
     </Text>
-    <Text Include="Graphics\VarRule.txt">
+    <Text Include="Errors.txt">
       <Filter>Main</Filter>
     </Text>
-    <Text Include="Graphics\TODO.txt">
+    <Text Include="TODO.txt">
       <Filter>Main</Filter>
     </Text>
-    <Text Include="Graphics\Errors.txt">
+    <Text Include="VarRule.txt">
       <Filter>Main</Filter>
     </Text>
   </ItemGroup>
