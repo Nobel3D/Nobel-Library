@@ -28,6 +28,9 @@
     <Filter Include="Base\NCScript">
       <UniqueIdentifier>{32925aa8-09ef-44a5-81db-a42a287db418}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{af1ce5c7-0b7f-490d-b1aa-35cd9dafaeea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\StaticMath.h">
@@ -99,17 +102,26 @@
     <ClInclude Include="Management\DateTime.h">
       <Filter>Management</Filter>
     </ClInclude>
-    <ClInclude Include="Base\NCScript\Console.h">
-      <Filter>Base\NCScript</Filter>
-    </ClInclude>
     <ClInclude Include="Base\NCScript\NError.h">
-      <Filter>Base\NCScript</Filter>
-    </ClInclude>
-    <ClInclude Include="Base\NCScript\System.h">
       <Filter>Base\NCScript</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\NMessageBox.h">
       <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Network.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\InternetProtocol.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Ping.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Stream\Latency.h">
+      <Filter>Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Console.h">
+      <Filter>Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -170,14 +182,26 @@
     <ClCompile Include="Management\DateTime.cpp">
       <Filter>Management</Filter>
     </ClCompile>
-    <ClCompile Include="Base\NCScript\Console.cpp">
-      <Filter>Base\NCScript</Filter>
-    </ClCompile>
     <ClCompile Include="Base\NCScript\NError.cpp">
       <Filter>Base\NCScript</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\NMessageBox.cpp">
       <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Network.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\InternetProtocol.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Ping.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Stream\Latency.cpp">
+      <Filter>Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Console.cpp">
+      <Filter>Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

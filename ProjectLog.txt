@@ -10,3 +10,20 @@ Added class NMessageBox and his enumeration (NMessageBox.h)
 Revisited NFileName class (NFileName.h)
 Added file TODO.txt
 Added file Errors.txt
+
+/* 07/11/2015 */
+Added Net namespace
+Added class IP and Network (InternetProtocol.h / Network.h)
+Added operator char* to NString (NString.h)
+Fixed operator + (char* lvalue,NString rvalue) (NString.h)
+Added constant VOID to NString (NString.h)
+Added convertion and operators to NFloat (NFloat.h) 
+Added class Latency (Latency.h)
+Added class Ping (Ping.h)
+
+/* 09/11/2015 */
+Unified all stream (Console, Network, File)
+Change Console class with new stream controll and delete <iostream>
+Change something on NCScript and NError 
+Added checkin on IP constructor
+Change NFile constructor with NFileName and all matches

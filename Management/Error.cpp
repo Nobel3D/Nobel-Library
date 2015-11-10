@@ -17,7 +17,7 @@ using namespace NobelLib::Management;
 	void Error::Show()
 	{
 		errorBox(err_sText, err_sCaption);
-		Log::Write(err_sCaption,err_sText, new NFileName(NOBELENGINELOG));
+		Log::Write(err_sCaption,err_sText, NFileName(NOBELENGINELOG));
 		if (err_bFatal)
 			err_ForceQuit();
 	}

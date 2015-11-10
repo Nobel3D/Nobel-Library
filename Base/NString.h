@@ -22,11 +22,13 @@ namespace NobelLib
 		NString();
 		NString(const char* Const);
 		NString(const NString& CopyCC);
-		~NString();
 
 		void Clear();
 		bool Null();
 		static bool Null(const char*  IsEmpty);
+		static NString Zero();
+
+		bool chk_Number(); //this string is a number?
 
 		Array<NString> Split(const char Splitter, Array<NString> &arrayStr);
 		bool Find(const NString* str_My);
@@ -50,17 +52,22 @@ namespace NobelLib
 
 		int getLength();
 		
+		operator char* ();
 		operator const char* ();
 		operator const char*() const;
 
-		NString& operator=(const char* newChar);
-		NString& operator=(NString& strCopy);
-		NString& operator=(char newChar);
-		NString& operator+=(const char* addMe);
-		NString& operator+=(const char addMe);
-		NString& operator+=(const NString& addMe);
-		NString& operator+(const char* addMe);
-		NString& operator+(const NString& addMe);
+		NString operator=(const char* newChar);
+		NString operator=(NString& strCopy);
+		NString operator=(char newChar);
+		NString operator+=(const char* addMe);
+		NString operator+=(const char addMe);
+		NString operator+=(const NString& addMe);
+		NString operator+(const char* addMe);
+		NString operator+(const NString& addMe);
+		friend NString operator+(char* addMe, NString str)
+		{
+			return NString(addMe) + str;
+		}
 
 		char operator[](int index);
 

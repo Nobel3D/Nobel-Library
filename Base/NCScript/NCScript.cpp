@@ -7,15 +7,15 @@ using namespace NobelLib;
 using namespace NobelLib::NCS;
 using namespace NobelLib::Management;
 
-NCScript::NCScript( Array<NCommand*>* arrayCommand, NConsole* cmdConsole)
+NCScript::NCScript( Array<NCommand*>* arrayCommand, Console cmdConsole)
 {
 	this->fileLog = new IO::NFile("NLog.txt");
 	this->fileLog->Open(IO::Append);
 	addLog("[SYS] Loaded Logs stream!");
-	this->Console = cmdConsole;
+	ncs_cConsole = cmdConsole;
 	addLog("[SYS] Loading console: WIN32");
-	Console->setColor(Black, LGreen);
-	Console->sendOutput(NString("Starting Nobel CScript Console: Loading commands..."));
+	ncs_cConsole.setColor(Black, LGreen);
+	ncs_cConsole << NString("Starting Nobel CScript Console: Loading commands...");
 	cmdUploaded = *arrayCommand;
 	logCommands();
 }
@@ -45,25 +45,25 @@ bool NCScript::WaitCommand()
 		int Index = checkCommand();
 		if (Index == -1)
 		{
-			Console->sendOutput(NString("ERROR: Command \"") + NString(strCommand) + NString("\" not found."));
+			ncs_cConsole << NString("ERROR: Command \"") + NString(strCommand) + NString("\" not found.");
 		}
 		else
 		{
 			if (TypeOperation == 1)
 				cmdUploaded[Index]->loadParams(Params);
 
-			Console->sendOutput(cmdUploaded[Index]->exeCommand().getOutput());
+			ncs_cConsole << cmdUploaded[Index]->exeCommand().getOutput();
 		}
 	}
 	else if (TypeOperation == 2 || TypeOperation == 3)
 	{
 
 		int index = indexVariable(this->Header);
-		Console->sendOutput(Variables[index]->getOutput());
+		ncs_cConsole << Variables[index]->getOutput();
 	}
 	else
 	{
-		Console->sendOutput(NString("ERROR: Wrong Syntax."));
+		ncs_cConsole << NString("ERROR: Wrong Syntax.");
 	}
 	Reset();
 	return true;

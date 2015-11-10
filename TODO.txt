@@ -1,8 +1,19 @@
-/* 30/10/2015 */
 - Manage Error and log class DONE
 ---Add MessageBox class DONE
 ---Review DateTime DONE
-- NString operator + doesnt work
+- NString operator + doesnt work DONE
 - Review all code
 - check windowprocess
 - add funcion to Form
+- add List and Array clean funcions
+- add Network class DONE
+---Manage IP class DONE 
+-----Add checkin on construction (char & int) DONE
+---Manage Network DONE
+---Add ping funcions 
+---Add stream network DONE 
+---Add connection details
+- add Matrix data structure
+- end class ping and connection
+- review stream structure
+- fix endline error in streams

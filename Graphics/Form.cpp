@@ -222,7 +222,7 @@ void Form::Resize(int w, int h)
 LRESULT CALLBACK Form::WindowProcess(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	
-	switch (message)
+	switch (msg.message)
 	{
 	case WM_QUIT:
 	{

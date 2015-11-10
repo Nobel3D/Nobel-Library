@@ -2,3 +2,11 @@ List of NobelLib's errors code
 
 0 = null error
 10 = log fail to write
+36 = number of float is negative
+40 = Error code from WSAStartUp()
+41 = Socket is not valid
+42 = ttp setup failed 
+44 = Failed to find hostname
+45 = Error connecting socket
+51 = IP has not been initialized
+52 = Impossible get IP from his class

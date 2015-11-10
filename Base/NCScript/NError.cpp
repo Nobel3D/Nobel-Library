@@ -1,19 +1,19 @@
 #include "NError.h"
-#include "System.h"
+#include <Windows.h>
 
 
 using namespace NobelLib::NCS;
 using namespace NobelLib;
 
-NError::NError(NString stringMessage, NConsole* ptrConsole)
+NError::NError(NString stringMessage, Console& ptrConsole)
 {
-	this->Console = ptrConsole;
+	err_cConsole = ptrConsole;
 	strError = stringMessage;
 }
 
 void NError::Show()
 {
-		Console->sendOutput(this->strError);
-		Console->Wait();
+		err_cConsole << this->strError;
+		err_cConsole.Wait();
 		exit(-1);
 }

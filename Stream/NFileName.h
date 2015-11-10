@@ -1,6 +1,5 @@
 #pragma once
 #include "..\Base\NString.h"
-#include "NFile.h"
 
 namespace NobelLib
 {
@@ -22,8 +21,6 @@ namespace NobelLib
 			NString txt_sExtension;
 			/*Complete name file*/
 			NString txt_sFile;
-			/*File pointer*/
-			NFile* txt_rFile;
 
 			NString getPath();
 

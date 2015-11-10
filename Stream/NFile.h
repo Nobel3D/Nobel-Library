@@ -2,6 +2,7 @@
 #include "..\Base\NString.h"
 #include "Stream.h"
 #include <stdio.h>
+#include "NFileName.h"
 
 namespace NobelLib
 {
@@ -11,7 +12,7 @@ namespace NobelLib
 		class NFile : public Stream
 		{
 		private:
-			NString Path;
+			NFileName txt_cPath;
 			FILE* LinkFile;
 			OpenMode Mode;
 			bool Start;
@@ -20,15 +21,14 @@ namespace NobelLib
 			NString getModeOpen(OpenMode _Mode);
 
 		public:
-			NFile(NString& _Path);
-			NFile(const char* _Path);
+			NFile(NFileName path);
 			bool Open(OpenMode OMode);
-			void Close();
+			int Close();
 
 			bool IsStarted();
 
-			void Write();
-			bool Read(void* vpGet, UINT length);
+			int Write();
+			int Read(void* vpGet, UINT length);
 		};
 	}
 }

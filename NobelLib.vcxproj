@@ -56,7 +56,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
@@ -86,13 +86,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Base\Array.h" />
+    <ClInclude Include="Base\Console.h" />
     <ClInclude Include="Base\List.h" />
-    <ClInclude Include="Base\NCScript\Console.h" />
     <ClInclude Include="Base\NCScript\NCommand.h" />
     <ClInclude Include="Base\NCScript\NCScript.h" />
     <ClInclude Include="Base\NCScript\NError.h" />
     <ClInclude Include="Base\NCScript\NResult.h" />
-    <ClInclude Include="Base\NCScript\System.h" />
     <ClInclude Include="Base\NString.h" />
     <ClInclude Include="Definitions.h" />
     <ClInclude Include="Graphics\Form.h" />
@@ -108,13 +107,17 @@
     <ClInclude Include="Math\StaticMath.h" />
     <ClInclude Include="Math\Vector\Vector.h" />
     <ClInclude Include="Math\Vector\Vector2.h" />
+    <ClInclude Include="Network\Ping.h" />
+    <ClInclude Include="Network\InternetProtocol.h" />
+    <ClInclude Include="Network\Network.h" />
     <ClInclude Include="NobelEngine.h" />
+    <ClInclude Include="Stream\Latency.h" />
     <ClInclude Include="Stream\NFile.h" />
     <ClInclude Include="Stream\NFileName.h" />
     <ClInclude Include="Stream\Stream.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Base\NCScript\Console.cpp" />
+    <ClCompile Include="Base\Console.cpp" />
     <ClCompile Include="Base\NCScript\NCommand.cpp" />
     <ClCompile Include="Base\NCScript\NCScript.cpp" />
     <ClCompile Include="Base\NCScript\NError.cpp" />
@@ -133,6 +136,10 @@
     <ClCompile Include="Math\StaticMath.cpp" />
     <ClCompile Include="Math\Vector\Vector.cpp" />
     <ClCompile Include="Math\Vector\Vector2.cpp" />
+    <ClCompile Include="Network\InternetProtocol.cpp" />
+    <ClCompile Include="Network\Network.cpp" />
+    <ClCompile Include="Network\Ping.cpp" />
+    <ClCompile Include="Stream\Latency.cpp" />
     <ClCompile Include="Stream\NFile.cpp" />
     <ClCompile Include="Stream\NFileName.cpp" />
     <ClCompile Include="Stream\Stream.cpp" />

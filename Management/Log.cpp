@@ -10,15 +10,15 @@ int Log::countFail = 0;
 
 	Log::Log(NFileName filePath)
 	{
-		txt_rPath = filePath;
+		txt_rLog = new NFile(filePath);
 	}
 	void Log::Write(NString strHandler, NString strLog)
 	{
 		try
 		{
-			txt_rPath.txt_rFile->Open(Append);
-			txt_rPath.txt_rFile->WriteLine(NString("[") + strHandler + "] " + DateTime::NowTime() + " -> " + strLog);
-			txt_rPath.txt_rFile->Close();
+			txt_rLog->Open(Append);
+			txt_rLog->WriteLine(NString("[") + strHandler + "] " + DateTime::NowTime() + " -> " + strLog);
+			txt_rLog->Close();
 		}
 		catch (std::exception* logEx)
 		{
@@ -34,13 +34,14 @@ int Log::countFail = 0;
 		}
 	}
 
-	void Log::Write(NString strHandler, NString strLog, NFileName* filelog)
+	void Log::Write(NString strHandler, NString strLog, NFileName filelog)
 	{
 		try
 		{
-			filelog->txt_rFile->Open(Append);
-			filelog->txt_rFile->WriteLine(NString("[") + strHandler + "] " + DateTime::NowTime() + " -> " + strLog);
-			filelog->txt_rFile->Close();
+			NFile* txtLog = new NFile(filelog);
+			txtLog->Open(Append);
+			txtLog->WriteLine(NString("[") + strHandler + "] " + DateTime::NowTime() + " -> " + strLog);
+			txtLog->Close();
 		}
 		catch (std::exception* logEx)
 		{

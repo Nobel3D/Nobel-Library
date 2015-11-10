@@ -20,15 +20,14 @@ namespace NobelLib
 
 			void createBuffer(const char* sendBuffer);
 			virtual bool CanLoad();
-			virtual void Write() = 0;
-			virtual bool Read(void* vpGet, UINT length) = 0;
+			virtual int Write() = 0;
+			virtual int Read(void* vpGet, UINT length) = 0;
 		public:
-			Stream(NString Path);
-			Stream(NString IP, int Port);
+			Stream();
 			~Stream();
 
 			virtual bool Open(OpenMode OpenFile);
-			virtual void Close();
+			virtual int Close();
 
 			void WriteLine(const char* Send);
 			void WriteStr(const char* Send);

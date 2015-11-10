@@ -4,14 +4,9 @@
 using namespace NobelLib::IO;
 using namespace NobelLib;
 
-NFile::NFile(NString& _Path) : Stream(_Path)
+NFile::NFile(NFileName Path) 
 {
-	Path =  _Path;
-	Start = false;
-}
-NFile::NFile(const char* _Path) : Stream(_Path)
-{
-	Path = NString(_Path);
+	txt_cPath = Path;
 	Start = false;
 }
 bool NFile::Open(OpenMode OMode)
@@ -20,7 +15,7 @@ bool NFile::Open(OpenMode OMode)
 	{
 		if (IsStarted() == false && CanLoad())
 		{
-			LinkFile = fopen(Path, "r");
+			LinkFile = fopen(txt_cPath, "r");
 			Mode = OMode;
 			Start = true;
 			return true;
@@ -32,7 +27,7 @@ bool NFile::Open(OpenMode OMode)
 	{
 		if (IsStarted() == false)
 		{
-			LinkFile = fopen(Path, getModeOpen(OMode));
+			LinkFile = fopen(txt_cPath, getModeOpen(OMode));
 			Mode = OMode;
 			Start = true;
 			return true;
@@ -43,7 +38,7 @@ bool NFile::Open(OpenMode OMode)
 }
 bool NFile::CanLoad()
 {
-	if (FILE *file = fopen(Path, "r")) {
+	if (FILE *file = fopen(txt_cPath, "r")) {
 		fclose(file);
 		return true;
 	}
@@ -74,26 +69,26 @@ NString NFile::getModeOpen(OpenMode _Mode)
 	return NString(TypeOpen);
 }
 
-void NFile::Close()
+int NFile::Close()
 {
-//	if (IsStarted())
-		fclose(LinkFile);
+	if (IsStarted())
+		return fclose(LinkFile);
 }
 
-void NFile::Write()
+int NFile::Write()
 {
-	fwrite(stmBuffer, 1, stmSize, LinkFile);
+	return fwrite(stmBuffer, 1, stmSize, LinkFile);
 }
 
-bool NFile::Read(void* vpGet, UINT length)
+int NFile::Read(void* vpGet, UINT length)
 {
 	if (Mode == OpenMode::Reading)
 	{
 		UINT result = fread(vpGet, 1, length, LinkFile);
 		if (result != length)
-			return false;
+			return 0;
 		else
-			return true;
+			return 1;
 	}
 	else
 		vpGet = NULL;

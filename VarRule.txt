@@ -18,6 +18,8 @@ ncs (ncscript)
 msgb (messagebox)
 ex (exception)
 res (resource files)
+net (network)
+chk (check)
 
 Type Return:
 b (bool)
@@ -28,6 +30,12 @@ c (generic class)
 r (resource file)
 x (exception)
 n (enumeration)
+a (array)
+l (list)
+m (matrix)
+t (time)
+p (ping)
+w (windows class)
 <nothing> (funcion void)
 
 Name Variable is a short description about the variable

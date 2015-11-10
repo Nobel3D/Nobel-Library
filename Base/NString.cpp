@@ -28,6 +28,7 @@ NString::NString(const NString& CopyCC)
 	this->str_Length = strlen(CopyCC);
 }
 
+/*
 NString::~NString()
 {
 	if (!this->Null()) 
@@ -36,6 +37,7 @@ NString::~NString()
 		str_Length = -1;
 	}
 }
+*/
 
 char* NString::BasicString(const char* My)
 {
@@ -129,6 +131,25 @@ bool NString::Null(const char* IsEmpty)
 		return true;
 	else
 		return false;
+}
+
+NString NString::Zero()
+{
+	return NString("");
+}
+
+bool NString::chk_Number()
+{
+	for (int i = 0;i < this->getLength(); i++)
+	{
+		if ((*this)[i] != '0' && (*this)[i] != '1' &&
+			(*this)[i] != '2' && (*this)[i] != '3' &&
+			(*this)[i] != '4' && (*this)[i] != '5' &&
+			(*this)[i] != '6' && (*this)[i] != '7' &&
+			(*this)[i] != '8' && (*this)[i] != '9')
+				return false;
+	}
+	return true;
 }
 bool NString::Find(const NString* str_My)
 {
@@ -294,7 +315,10 @@ NString::operator const char *() const
 {
   return this->str_Pointer;
 }
-
+NString::operator char *()
+{
+	return this->str_Pointer;
+}
 wchar_t* NString::toUnicode()
 {
 	int sizeTCHAR = strlen(this->str_Pointer) + 1;
@@ -325,7 +349,7 @@ NString NString::fromUnicode(wchar_t* struni)
 	return ct;
 }
 
-NString& NString::operator =(const char* newChar)
+NString NString::operator =(const char* newChar)
 {
 	this->Clear();
 	this->str_Pointer = BasicString(newChar);
@@ -333,7 +357,7 @@ NString& NString::operator =(const char* newChar)
 	return *this;
 }
 
-NString& NString::operator =(char newChar)
+NString NString::operator =(char newChar)
 {
 	this->Clear();
 	this->str_Pointer= &newChar;
@@ -341,34 +365,34 @@ NString& NString::operator =(char newChar)
 	return *this;
 }
 
-NString& NString::operator =(NString& strCopy)
+NString NString::operator =(NString& strCopy)
 {
 	this->Clear();
 	this->str_Pointer = BasicString(strCopy);
 	this->str_Length = strlen(strCopy);
 	return *this;
 }
-NString& NString::operator+=(const char addMe)
+NString NString::operator+=(const char addMe)
 {
 	return addString(addMe);
 }
 
-NString& NString::operator+=(const char* addMe)
+NString NString::operator+=(const char* addMe)
 {
 	return addString(addMe);
 }
 
-NString& NString::operator+=(const NString& addMe)
+NString NString::operator+=(const NString& addMe)
 {
 	return addString(addMe);
 }
 
-NString& NString::operator+(const char* addMe)
+NString NString::operator+(const char* addMe)
 {
 	return addString(addMe);
 }
 
-NString& NString::operator+(const NString& addMe)
+NString NString::operator+(const NString& addMe)
 {
 	return addString(addMe);
 }

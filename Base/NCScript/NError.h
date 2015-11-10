@@ -1,7 +1,7 @@
 #pragma once
 
 #include "..\NString.h"
-#include "Console.h"
+#include "..\Console.h"
 
 namespace NobelLib
 {
@@ -11,9 +11,9 @@ namespace NobelLib
 		{
 		private: 
 			NString strError;
-			NConsole* Console;
+			Console err_cConsole;
 		public:
-			NError(NString stringMessage, NConsole* ptrConsole);
+			NError(NString stringMessage, Console& ptrConsole);
 			void Show();
 		};
 	}

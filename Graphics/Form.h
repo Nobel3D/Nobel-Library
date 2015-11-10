@@ -2,7 +2,6 @@
 
 #include <windows.h>
 #include "..\Base\NString.h"
-#include <windows.h>
 #include "Point.h"
 #include "VideoMode.h"
 #include "OpenGL.h"

@@ -24,7 +24,6 @@ void NFileName::setFile(NString path)
 	try
 	{
 		txt_sFile = path;
-		txt_rFile = new NFile(txt_sFile);
 
 		if (txt_sFile.Find("."))
 		{
@@ -71,7 +70,6 @@ NFileName::operator const char *() const
 
 NFileName NFileName::operator=(NFileName file)
 {
-	this->txt_rFile = file.txt_rFile;
 	this->txt_sExtension = file.txt_sExtension;
 	this->txt_sFile = file.txt_sFile;
 	this->txt_sFileName = file.txt_sFileName;

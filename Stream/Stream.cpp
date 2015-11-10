@@ -3,7 +3,7 @@
 using namespace NobelLib::IO;
 using namespace NobelLib;
 
-Stream::Stream(NString Path)
+Stream::Stream()
 {
 }
 //Stream::Stream(NString IP, int Port)
@@ -18,8 +18,9 @@ Stream::~Stream()
 	Close();
 }
 
-void Stream::Close()
+int Stream::Close()
 {
+	return 1;
 }
 
 bool Stream::CanLoad()
@@ -32,8 +33,9 @@ bool Stream::Open(OpenMode Mode)
 	return CanLoad();
 }
 
-void Stream::Write()
+int Stream::Write()
 {
+	return 1;
 }
 void Stream::WriteLine(const char* Send)
 {
