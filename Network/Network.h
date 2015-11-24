@@ -30,7 +30,7 @@ namespace NobelLib
 		//	int Connect(IP target, int ttl); Add time to live
 
 			int Write();
-			int Read(void* vpGet, UINT length);
+			LLINT Read(void* vpGet, LLINT length, LLINT count = 1);
 
 			void net_Port(int port);
 		};

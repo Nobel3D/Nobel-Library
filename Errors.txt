@@ -2,6 +2,10 @@ List of NobelLib's errors code
 
 0 = null error
 10 = log fail to write
+18 = Impossible to load the file
+19 = File is already loaded
+20 = file is setted as "text" cannot use binary funcions
+21 = There is an error on result of fread operation
 36 = number of float is negative
 40 = Error code from WSAStartUp()
 41 = Socket is not valid
@@ -10,3 +14,16 @@ List of NobelLib's errors code
 45 = Error connecting socket
 51 = IP has not been initialized
 52 = Impossible get IP from his class
+73 = Impossible draw the form because you doesnt initialize him
+74 = Impossible create the form because you doesnt initialize him
+75 = Impossible register form on windows
+76 = Failed to create hWnd
+77 = Failed to create a GL Device Context.
+78 = Failed to find a suitable PixelFormat
+79 = Failed to set PixelFormat
+80 = Failed to create a rendering context
+81 = Failed to activate a rendering context
+90 = Header bmp not found, impossible to load 
+91 = BMP file is without signature
+92 = Check Vertex Shader failed cannot load shaders
+93 = Check Fragment Shader failed cannot load shaders

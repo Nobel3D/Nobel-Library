@@ -2,7 +2,6 @@
 #include "..\Definitions.h"
 
 using namespace NobelLib;
-using namespace NobelLib::Math;
 
 Latency::Latency(Array<NFloat>* tried)
 {
@@ -17,7 +16,7 @@ NFloat Latency::Average()
 	{
 		ret += net_aLatency[i].getNative();
 	}
-	return ret / num;
+	return ret / (float)num;
 }
 
 NFloat Latency::Maximum()

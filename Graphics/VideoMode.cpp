@@ -1,8 +1,8 @@
 #include "VideoMode.h"
-#include "..\Math\NFloat.h"
+#include "NFloat.h"
 
 using namespace NobelLib::Graphics;
-using namespace NobelLib::Math;
+using namespace NobelLib;
 
 Resolution::Resolution(int w, int h)
 {

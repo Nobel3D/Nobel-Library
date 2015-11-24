@@ -67,7 +67,11 @@ Stream& Stream::operator<< (const char* str)
 	WriteLine(str);
 	return *this;
 }
-NString Stream::ReadLine(void)
+bool NobelLib::IO::Stream::isEoF()
+{
+	return stm_bEoF;
+}
+NString Stream::ReadLine()
 {
 	NString strRet = "";
 	char c='!';
@@ -75,10 +79,8 @@ NString Stream::ReadLine(void)
 	{
 		if (Read(&c, sizeof(char)))
 			strRet += c;
-		else
-			break;
 	} 
-	while (c != '\n');
+	while (c != '\n' && !stm_bEoF);
 
 	return NString(strRet);
 }

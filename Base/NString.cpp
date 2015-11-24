@@ -319,6 +319,14 @@ NString::operator char *()
 {
 	return this->str_Pointer;
 }
+NString::operator const wchar_t*()
+{
+	return toUnicode();
+}
+NString::operator wchar_t *()
+{
+	return toUnicode();
+}
 wchar_t* NString::toUnicode()
 {
 	int sizeTCHAR = strlen(this->str_Pointer) + 1;

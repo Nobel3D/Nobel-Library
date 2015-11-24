@@ -15,9 +15,14 @@ int Console::Close()
 {
 	return FreeConsole();
 }
-int Console::Read(void* vpGet, UINT length)
+LLINT Console::Read(void* vpGet, LLINT length, LLINT count)
 {
-	return fread(vpGet, 1, length, stdin);
+	LLINT result;
+	result = fread(vpGet, count, length, stdin);
+	if (result == length)
+		return result;
+	else
+		stm_bEoF = true;
 }
 int Console::Write()
 {

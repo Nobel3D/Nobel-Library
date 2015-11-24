@@ -27,3 +27,34 @@ Change Console class with new stream controll and delete <iostream>
 Change something on NCScript and NError 
 Added checkin on IP constructor
 Change NFile constructor with NFileName and all matches
+
+/* 20/11/2015 */
+Added Input classes {KeyBoard, Mouse, Input} (Input.h)
+Change return flag for exception from x to e (VarRule.txt)
+Added return flag for xinput to x and named xin (VarRule.txt)
+Change class name from GLClass to GLObject (OpenGL.h)
+Change path for NFloat from Math to Graphics (NFloat.h)
+Change Point class add support for NFloat (Point.h)
+Create first template of GLObject (Triangles.h)
+
+/* 21/11/2015 */
+Change management of gl_iBit (OpenGL.h)
+Added management on Form error 75 and 76 (Form.h) 
+Added standard convertion from NString to wchar_t (NString.h) 
+Improved and commented Form class (Form.h)
+Improved GLObject (OpenGL.h)
+
+/* 22/11/2015 */
+Added class NColor (NColor.h)
+Added definition of standard colors (NColor.h)
+Added class Point3 (Point.h)
+Change some name on SystemColor (Console.h)
+Added support for Binaries files (NFile.h)
+Eliminate WindowProcess from Form
+Added support to compiling shaders
+Fixed various bug on text stream (NFile.h)
+
+/* 23/11/2015 */
+Added class Matrix (Matrix.h)
+Fixed various bug on Array class (Array.h)
+Fixed title on form class (Form.h)

@@ -55,6 +55,8 @@ namespace NobelLib
 		operator char* ();
 		operator const char* ();
 		operator const char*() const;
+		operator wchar_t*();
+		operator const wchar_t*();
 
 		NString operator=(const char* newChar);
 		NString operator=(NString& strCopy);

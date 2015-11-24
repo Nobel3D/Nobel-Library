@@ -1,6 +1,7 @@
 #pragma once
 
 #include "..\Base\NString.h"
+#include "Log.h"
 #include <exception>
 
 #ifndef NOBELENGINELOG

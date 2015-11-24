@@ -16,19 +16,21 @@ namespace NobelLib
 			FILE* LinkFile;
 			OpenMode Mode;
 			bool Start;
+			bool res_bBinary;
 
 			bool CanLoad();
 			NString getModeOpen(OpenMode _Mode);
 
 		public:
 			NFile(NFileName path);
-			bool Open(OpenMode OMode);
+			bool Open(OpenMode OMode,bool isBinary = false);
 			int Close();
 
 			bool IsStarted();
 
 			int Write();
-			int Read(void* vpGet, UINT length);
+			LLINT Read(void* vpGet, LLINT length, LLINT count = 1);
+			void Write(BYTE* bin);
 		};
 	}
 }

@@ -68,7 +68,7 @@ int Network::Write()
 	return send(*net_wSocket, (char*)stmBuffer, stmSize, 0);
 }
 
-int Network::Read(void* vpGet, UINT length)
+LLINT Network::Read(void* vpGet, LLINT length, LLINT count)
 {
 	int res = recv(*net_wSocket, (char*)vpGet, length, 0);
 	net_bEOF = (res <= 0) || ((ULONG)res < res);

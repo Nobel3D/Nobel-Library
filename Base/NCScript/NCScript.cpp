@@ -14,7 +14,7 @@ NCScript::NCScript( Array<NCommand*>* arrayCommand, Console cmdConsole)
 	addLog("[SYS] Loaded Logs stream!");
 	ncs_cConsole = cmdConsole;
 	addLog("[SYS] Loading console: WIN32");
-	ncs_cConsole.setColor(Black, LGreen);
+	ncs_cConsole.setColor(DBlack, LGreen);
 	ncs_cConsole << NString("Starting Nobel CScript Console: Loading commands...");
 	cmdUploaded = *arrayCommand;
 	logCommands();
@@ -79,7 +79,7 @@ int NCScript::checkSyntax(NString strCommand)
 		arraySplit[1] = arraySplit[1].Replace(")", "\0");
 		if (arraySplit[1].Null())
 		{
-			arraySplit.delArray();
+			arraySplit.Delete();
 			return 0;
 		}
 		else if (arraySplit[1].Find(","))
@@ -89,7 +89,7 @@ int NCScript::checkSyntax(NString strCommand)
 			{
 				Params.addItem(NResult(arraySplit[i]));
 			}
-			arraySplit.delArray();
+			arraySplit.Delete();
 			return 1;
 		}
 	}
@@ -110,7 +110,7 @@ int NCScript::checkSyntax(NString strCommand)
 		else
 		{
 			Header = strCommand;
-			arraySplit.delArray();
+			arraySplit.Delete();
 			return 2;
 		}
 	}
@@ -151,7 +151,7 @@ void NCScript::Reset()
 NCScript::~NCScript()
 {
 	addLog("[SYS] Closing NCScript...");
- 	this->cmdUploaded.delArray();
+ 	this->cmdUploaded.Delete();
 	addLog("[SYS] Cleaning resources");
 	this->fileLog->Close();
 }

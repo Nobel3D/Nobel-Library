@@ -3,6 +3,12 @@ namespace NobelLib
 {
 	namespace Graphics
 	{
+		enum ScreenMode
+		{
+			FULLSCREEN = 0,
+			WINDOWED = 1,
+			BORDERLESS = 2 //Programming
+		};
 		class Resolution
 		{	private:
 			public:

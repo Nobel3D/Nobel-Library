@@ -3,7 +3,7 @@
 #include <math.h>
 
 using namespace NobelLib;
-using namespace NobelLib::Math;
+using namespace NobelLib::Graphics;
 using namespace NobelLib::Management;
 
 NFloat::NFloat()
@@ -49,6 +49,11 @@ float NFloat::getDecimal()
 NString NFloat::toString()
 {
 	return NString::fromDouble(this->n);
+}
+
+NFloat::operator GLfloat()
+{
+	return getNative();
 }
 
 void NFloat::operator*=(NFloat addMe)

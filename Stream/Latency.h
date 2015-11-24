@@ -1,8 +1,8 @@
 #pragma once
 
 #include "..\Base\Array.h"
-#include "..\Math\NFloat.h"
-using namespace NobelLib::Math;
+#include "..\Graphics\NFloat.h"
+using namespace NobelLib::Graphics;
 
 namespace NobelLib
 {

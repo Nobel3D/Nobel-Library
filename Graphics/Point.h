@@ -1,5 +1,7 @@
 #pragma once
+#include "NFloat.h"
 
+using namespace NobelLib;
 namespace NobelLib
 {
 	namespace Graphics
@@ -7,11 +9,21 @@ namespace NobelLib
 		class Point
 		{
 		public:
-			int x;
-			int y;
+			NFloat x;
+			NFloat y;
 
 			Point();
-			Point(int _x, int _y);
+			Point(NFloat _x, NFloat _y);
+		};
+		class Point3
+		{
+		public:
+			NFloat x;
+			NFloat y;
+			NFloat z;
+
+			Point3();
+			Point3(NFloat _x, NFloat _y, NFloat _z);
 		};
 	}
 }

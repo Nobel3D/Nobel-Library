@@ -78,9 +78,6 @@
     <ClInclude Include="Graphics\OpenGL.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Math\NFloat.h">
-      <Filter>Math</Filter>
-    </ClInclude>
     <ClInclude Include="Management\Error.h">
       <Filter>Management</Filter>
     </ClInclude>
@@ -123,6 +120,21 @@
     <ClInclude Include="Base\Console.h">
       <Filter>Base</Filter>
     </ClInclude>
+    <ClInclude Include="Base\Input.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\NFloat.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\NColor.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Texture.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\Matrix.h">
+      <Filter>Base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\StaticMath.cpp">
@@ -157,9 +169,6 @@
     </ClCompile>
     <ClCompile Include="Graphics\OpenGL.cpp">
       <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Math\NFloat.cpp">
-      <Filter>Math</Filter>
     </ClCompile>
     <ClCompile Include="Management\Error.cpp">
       <Filter>Management</Filter>
@@ -202,6 +211,18 @@
     </ClCompile>
     <ClCompile Include="Base\Console.cpp">
       <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\Input.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\NFloat.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\NColor.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Texture.cpp">
+      <Filter>Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

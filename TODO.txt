@@ -4,8 +4,8 @@
 - NString operator + doesnt work DONE
 - Review all code
 - check windowprocess
-- add funcion to Form
-- add List and Array clean funcions
+- add funcion to Form DONE
+- add List and Array clean funcions DONE
 - add Network class DONE
 ---Manage IP class DONE 
 -----Add checkin on construction (char & int) DONE
@@ -13,7 +13,15 @@
 ---Add ping funcions 
 ---Add stream network DONE 
 ---Add connection details
-- add Matrix data structure
+- add Matrix data structure DONE
 - end class ping and connection
 - review stream structure
-- fix endline error in streams
+- fix endline error in streams DONE
+- add error return in Form::getStatus()
+- add ShowWindow in Form::Show() DONE
+- restart gl and redraw all object
+- fix title form DONE
+- use stream class for binary streams DONE
+- add standard end of file on network stream
+- add Log on Error class DONE
+- add errors on matrix, array, list classes

@@ -1,12 +1,13 @@
 #pragma once
 
 #include "..\Base\NString.h"
+#include <GL\glew.h>
 
 using namespace NobelLib;
 
 namespace NobelLib
 {
-	namespace Math
+	namespace Graphics
 	{
 		class NFloat
 		{
@@ -22,6 +23,8 @@ namespace NobelLib
 			float getNative();
 			float getRound(int numberfloat);
 			float getDecimal();
+
+			operator GLfloat();
 
 			void operator*=(NFloat addMe);
 			void operator*=(float addMe);

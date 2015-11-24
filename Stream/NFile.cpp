@@ -1,19 +1,22 @@
 #pragma once
 #include "NFile.h"
+#include "..\Management\Error.h"
 
 using namespace NobelLib::IO;
 using namespace NobelLib;
+using namespace NobelLib::Management;
 
 NFile::NFile(NFileName Path) 
 {
 	txt_cPath = Path;
 	Start = false;
 }
-bool NFile::Open(OpenMode OMode)
+bool NFile::Open(OpenMode OMode, bool isBinary)
 {
+	res_bBinary = isBinary;
 	if (getModeOpen(OMode) == "r")
 	{
-		if (IsStarted() == false && CanLoad())
+		if (!IsStarted() && CanLoad())
 		{
 			LinkFile = fopen(txt_cPath, "r");
 			Mode = OMode;
@@ -21,7 +24,7 @@ bool NFile::Open(OpenMode OMode)
 			return true;
 		}
 		else
-			return false;
+			Error("Impossible to load stream to target file!", 17, false);
 	}
 	else
 	{
@@ -33,7 +36,7 @@ bool NFile::Open(OpenMode OMode)
 			return true;
 		}
 		else
-			return false;
+			Error("Target file is already loaded!", 18, false);
 	}
 }
 bool NFile::CanLoad()
@@ -53,20 +56,24 @@ bool NFile::IsStarted()
 
 NString NFile::getModeOpen(OpenMode _Mode)
 {
-	NString TypeOpen;
+	NString TypeOpen = NString();
 	if (_Mode == OpenMode::Reading)
 	{
-		TypeOpen = "r";
+		TypeOpen += "r";
 	}
 	if (_Mode == OpenMode::Writing)
 	{
-		TypeOpen = "w";
+		TypeOpen += "w";
 	}
 	if (_Mode == OpenMode::Append)
 	{
-		TypeOpen = "a";
+		TypeOpen += "a";
 	}
-	return NString(TypeOpen);
+	if (res_bBinary)
+	{
+		TypeOpen += "b";
+	}
+	return TypeOpen;
 }
 
 int NFile::Close()
@@ -80,16 +87,51 @@ int NFile::Write()
 	return fwrite(stmBuffer, 1, stmSize, LinkFile);
 }
 
-int NFile::Read(void* vpGet, UINT length)
+LLINT NFile::Read(void* vpGet, LLINT length, LLINT count)
 {
+	LLINT result = 0;
 	if (Mode == OpenMode::Reading)
 	{
-		UINT result = fread(vpGet, 1, length, LinkFile);
-		if (result != length)
-			return 0;
+		if (!res_bBinary)
+		{
+			result = fread(vpGet, count, length, LinkFile);
+			if (result == length)
+				return length;
+			else
+			{
+				stm_bEoF = true;
+				return 0;
+			}
+		}
 		else
-			return 1;
+		{
+			return fread(vpGet, length, count, LinkFile);
+			if (result == length)
+				return length;
+			else
+			{
+				stm_bEoF = true;
+				return 0;
+			}
+		}
 	}
 	else
+	{
+		Error("NobelLib::IO::NFile::Read(TextFile) Impossible use a writing stream to writing funcions!", 19, false);
 		vpGet = NULL;
+	}
+}
+
+
+
+void NFile::Write(BYTE* bin)
+{
+	if (res_bBinary)
+	{
+		fwrite(bin, sizeof(bin), 1, LinkFile);
+	}
+	else
+	{
+		Error("NobelLib::IO::NFile::Write(BinaryFile) Impossible use binary stream in text stream!", 20, false);
+	}
 }

@@ -1,9 +1,10 @@
 #include "NFileName.h"
-#include <stdexcept>
+#include "..\Management\Error.h"
 #include <iostream>
 
 using namespace NobelLib;
 using namespace NobelLib::IO;
+using namespace NobelLib::Management;
 
 NFileName::NFileName()
 {
@@ -21,8 +22,6 @@ NFileName::NFileName(NString filePath)
 
 void NFileName::setFile(NString path)
 {
-	try
-	{
 		txt_sFile = path;
 
 		if (txt_sFile.Find("."))
@@ -34,13 +33,8 @@ void NFileName::setFile(NString path)
 		}
 		else
 		{
-			throw std::invalid_argument("Error path into constructor of NFileName!");
+			Error("Error path into constructor of NFileName!", 16, false);
 		}
-	}
-	catch (std::invalid_argument& e)
-	{
-		std::cout << e.what();
-	}
 }
 
 NString NFileName::takePath()

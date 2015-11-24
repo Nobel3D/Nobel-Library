@@ -5,12 +5,13 @@
 //MATH INCLUDE
 #include "Math\Vector\Vector.h"
 #include "Math\StaticMath.h"
-#include "Math\NFloat.h"
 //BASE INCLUDE
 #include "Base\Array.h"
 #include "Base\List.h"
 #include "Base\Console.h"
 #include "Base\NString.h"
+#include "Base\Input.h"
+#include "Base\Matrix.h"
 // BASE --> NCSCRIPT INCLUDE
 #include "Base\NCScript\NCScript.h"
 #include "Base\NCScript\NCommand.h"
@@ -25,6 +26,7 @@
 #include "Graphics\OpenGL.h"
 #include "Graphics\Point.h"
 #include "Graphics\VideoMode.h"
+#include "Graphics\NFloat.h"
 //STREAM INCLUDE
 #include "Stream\Latency.h"
 #include "Stream\Stream.h"
