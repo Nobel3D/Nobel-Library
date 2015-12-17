@@ -30,7 +30,7 @@ namespace NobelLib
 
 		bool chk_Number(); //this string is a number?
 
-		Array<NString> Split(const char Splitter, Array<NString> &arrayStr);
+		Array<NString>& Split(const char Splitter, Array<NString> &arrayStr);
 		bool Find(const NString* str_My);
 		bool Find(const char* char_My);
 		NString Sub(int IndexStart);

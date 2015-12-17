@@ -27,3 +27,7 @@ List of NobelLib's errors code
 91 = BMP file is without signature
 92 = Check Vertex Shader failed cannot load shaders
 93 = Check Fragment Shader failed cannot load shaders
+94 = A Triangle cannot have same point3d
+95 = GLObject vertex wasnt initialize or impossible to read, cannot make buffers
+96 = GLObject index wasnt initialize or impossible to read, cannot make buffers
+97 = GLObject general exception, you can look the log file to further information 

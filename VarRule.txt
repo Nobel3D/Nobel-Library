@@ -22,6 +22,7 @@ net (network)
 chk (check)
 xin (xinput)
 mtx (matrix)
+cam (camera)
 
 Type Return:
 b (bool)
@@ -36,10 +37,11 @@ a (array)
 l (list)
 m (matrix)
 t (time)
-p (ping)
+p (point2d/point3d)
 w (windows class)
 x (input)
-y (byte)
+y (byte or unsigned char)
+u (unsigned int)
 <nothing> (funcion void)
 
 Name Variable is a short description about the variable

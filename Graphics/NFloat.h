@@ -17,6 +17,7 @@ namespace NobelLib
 			NFloat(float _n);
 			NFloat(int _n);
 			NFloat(double _n);
+			NFloat(const NFloat &copy);
 			NFloat();
 
 			NString toString();

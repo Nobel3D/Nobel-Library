@@ -33,6 +33,10 @@ namespace NobelLib
 				for (int i = 0; i < width; i++)
 				{
 					mtx_mObject[i] = (Type*)malloc(mtx_iSize / width);
+					for (int x = 0; x < width; x++)
+					{
+						mtx_mObject[i][x] = Type();
+					}
 				}
 				mtx_bStart = true;
 			}

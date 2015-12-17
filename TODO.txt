@@ -25,3 +25,4 @@
 - add standard end of file on network stream
 - add Log on Error class DONE
 - add errors on matrix, array, list classes
+- add status of globject

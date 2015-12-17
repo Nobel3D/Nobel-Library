@@ -1,4 +1,6 @@
 #pragma once
+#include "..\Definitions.h"
+
 namespace NobelLib
 {
 	template < typename Type >
@@ -20,10 +22,7 @@ namespace NobelLib
 		}
 		bool Exist()
 		{
-			if (Started == true)
-				return true;
-			else
-				return false;
+			return Started;
 		}
 
 		Array()
@@ -53,6 +52,28 @@ namespace NobelLib
 
 		}
 
+		static Array<Type> Convert(Type* std, size_t length)
+		{
+			Array<Type> newArray(length);
+
+			for (int i = 0; i < length; i++)
+			{
+				newArray[i] = std[i];
+			}
+
+			return newArray;
+		}
+		static Type* Convert(Array<Type> std)
+		{
+			Type* newArray = new Type(std.SizeArray());
+
+			for (int i = 0; i < std.SizeArray(); i++)
+			{
+				newArray[i] = std[i];
+			}
+
+			return newArray;
+		}
 
 		void expArray(int NewIndex)
 		{
@@ -85,10 +106,10 @@ namespace NobelLib
 		}
 
 
-		void Copy(const Array<Type> &MyArray)
+		void Copy(const Array<Type>& MyArray)
 		{
 			if (this->Exist())
-				this->Clear();
+				(*this).Clear();
 
 			if (MyArray.array_Elements <= 0)
 				return;
@@ -102,6 +123,21 @@ namespace NobelLib
 			}
 		}
 
+		static void copyStdArray(const Type* arrayOrigin, int numElements, Type* arrayReplaced)
+		{
+			//TODO: CHECK THIS!
+			if (arrayOrigin == nullptr)
+				return;
+			if (arrayReplaced != nullptr)
+				delete[] arrayReplaced;
+
+			arrayReplaced = new Type[numElements];
+
+			for (int i = 0; i<numElements; i++)
+			{
+				arrayReplaced[i] = arrayOrigin[i];
+			}
+		}
 
 		Type& operator[] (int Index)
 		{

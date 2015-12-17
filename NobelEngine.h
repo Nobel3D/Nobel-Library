@@ -27,6 +27,15 @@
 #include "Graphics\Point.h"
 #include "Graphics\VideoMode.h"
 #include "Graphics\NFloat.h"
+#include "Graphics\NColor.h"
+#include "Graphics\NMessageBox.h"
+#include "Graphics\Vector4.h"
+#include "Graphics\Matrix4.h"
+#include "Graphics\Shader.h"
+#include "Graphics\Camera.h"
+//GRAPHICS --> GEOMETRIC INCLUDE
+#include "Graphics\Geometric\Triangles.h"
+#include "Graphics\Geometric\Lines.h"
 //STREAM INCLUDE
 #include "Stream\Latency.h"
 #include "Stream\Stream.h"

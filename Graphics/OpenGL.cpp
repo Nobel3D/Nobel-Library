@@ -1,5 +1,9 @@
 #include "OpenGL.h"
+#include "Point.h"
+#include <gtc\matrix_transform.hpp>
 
+
+using namespace glm;
 using namespace NobelLib::Graphics;
 using namespace NobelLib::IO;
 using namespace NobelLib;
@@ -7,13 +11,21 @@ using namespace NobelLib::Management;
 
 int GLObject::gl_iBit = 32;
 HDC GLObject::hDC = NULL;
+Resolution GLObject::scr_cResolution;
 
 GLObject::GLObject()
 {
-	glClearColor(1.0, 0.0, 0.0, 1.0);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glLoadIdentity();
-	glEnable(GL_TEXTURE_2D);
+}
+
+GLObject::~GLObject()
+{
+	// Cleanup VBO
+	glDeleteBuffers(1, &gl_uVbo);
+	glDeleteBuffers(1, &gl_uIbo);
+	glDeleteVertexArrays(1, &gl_uVao);
+
+	delete[] gl_aVertex;
+	delete[] gl_aIndex;
 }
 
 bool GLObject::gl_setBit( int bitrate )
@@ -23,21 +35,61 @@ bool GLObject::gl_setBit( int bitrate )
 	return true;
 }
 
+bool NobelLib::Graphics::GLObject::Initialize()
+{
+	glGenVertexArrays(1, &gl_uVao);
+	glBindVertexArray(gl_uVao);
+	return true;
+}
+
 void GLObject::gl_Sleep(LLINT Milliseconds)
 {
 	Sleep(Milliseconds);
 
 }
 
-void GLObject::gl_Clear()
-{
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
-}
-
 void GLObject::Color(NColor color)
 {
 	glColor3f(color.Red, color.Green, color.Blue);
+}
+
+RESULT NobelLib::Graphics::GLObject::gl_genBuffer(TypeBuffer type)
+{
+	try
+	{
+		switch (type)
+		{
+		case Vertex:
+		{
+			if (gl_aVertex == nullptr)
+			{
+				Error("Impossible to load a gl_aVertex if it's nullptr value, please create the Vertex Buffer", 95, false);
+				return -1;
+			}
+			//TODO
+			glGenBuffers(1, &gl_uVbo);
+			glBindBuffer(GL_ARRAY_BUFFER, gl_uVbo);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(gl_aVertex[0]) * gl_iVertex, gl_aVertex, GL_STATIC_DRAW);
+		}
+		case Index:
+		{
+			if (gl_aIndex == nullptr)
+			{
+				Error("Impossible to load a gl_aIndex if it's nullptr value, please create the Index Buffer", 96, false);
+				return -1;
+			}
+			glGenBuffers(1, &gl_uIbo);
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, gl_uIbo);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(gl_aIndex[0]) * gl_iIndex, gl_aIndex, GL_STATIC_DRAW);
+		}
+		}
+	}
+	catch (std::exception exc)
+	{
+		Error(&exc, 97, false);
+		return -2;
+	}
+	return 1;
 }
 
 GLuint GLObject::LoadTexture(Texture bmpTexture)
@@ -69,6 +121,21 @@ void GLObject::Resize(int w, int h)
 	glViewport(0, 0, w, h);
 }
 
+void GLObject::Rotate(NFloat alpha, Axis _ax)
+{
+	glPushMatrix();
+	switch (_ax)
+	{
+	case X:
+		glRotatef(delta, 1.0f, 0.0f, 0.0f);
+	case Y:
+		glRotatef(delta, 0.0f, 1.0f, 0.0f);
+	case Z:
+		glRotatef(delta, 0.0f, 0.0f, 1.0f);
+	}
+	delta += alpha;
+}
+
 void GLObject::startOrthogonal() 
 {
 	glMatrixMode(GL_PROJECTION);
@@ -86,113 +153,58 @@ void GLObject::endOrthogonal()
 	glPopMatrix();
 	glMatrixMode(GL_MODELVIEW);
 }
-
-GLuint GLObject::LoadShaders(IO::NFileName vertexFile, IO::NFileName fragmentFile)
+/*
+bool GLObject::Load(NFileName mesh)
 {
-		// Create the shaders
-		GLuint VertexShaderID = glCreateShader(GL_VERTEX_SHADER);
-		GLuint FragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
+	UINT     *pbuffer, *pbuffer;
+	UINT    size;
+	NFile* loading = new NFile(mesh);
+	loading->Open(Reading, true);
+	while (!loading->isEoF())
+	{
+		loading->Read(pbuffer,loading->getLenght());
+	}
+	
 
-		// Read the Vertex Shader code from the file
-		NString FragmentShaderCode;
-		NString VertexShaderCode;
-		NString line;
+	glGenVertexArrays(1, &gl_uVao);
+	glBindVertexArray(gl_uVao);
 
-		NFile VertexStream(vertexFile); VertexStream.Open(Reading);
+	glGenBuffers(1, &gl_uVbo);
+	glBindBuffer(GL_ARRAY_BUFFER, gl_uVbo);
+	glBufferData(GL_ARRAY_BUFFER, m_vcount * sizeof(mesh_vertex_t),
+		GL_PVOID(pbuffer), GL_STATIC_DRAW);
 
-		while (!VertexStream.isEoF())
-		{
-			VertexStream >> line;
-			VertexShaderCode += line;
-		}
-		VertexStream.Close();
+	glVertexAttribPointer(VERT_POSITION, 3, GL_FLOAT, GL_FALSE,
+		sizeof(mesh_vertex_t), GL_PVOID(0));
+	glEnableVertexAttribArray(VERT_POSITION);
 
-		// Read the Fragment Shader code from the file
-		NFile FragmentStream(fragmentFile); FragmentStream.Open(Reading);
+	glVertexAttribPointer(VERT_TEXCOORD, 2, GL_FLOAT, GL_FALSE,
+		sizeof(mesh_vertex_t), GL_PVOID(sizeof(float3)));
+	glEnableVertexAttribArray(VERT_TEXCOORD);
 
-		while (!FragmentStream.isEoF())
-		{
-			FragmentStream >> line;
-			FragmentShaderCode += line;
-		}
-		FragmentStream.Close();
+	glVertexAttribPointer(VERT_NORMAL, 3, GL_FLOAT, GL_FALSE,
+		sizeof(mesh_vertex_t), GL_PVOID(sizeof(float3) + sizeof(float2)));
+	glEnableVertexAttribArray(VERT_NORMAL);
 
-		GLint Result = GL_FALSE;
-		int InfoLogLength;
+	if (!m_icount)
+	{
+		delete[] buffer;
+		return true;
+	}
 
-		// Compile Vertex Shader
+	pbuffer += m_vcount * sizeof(mesh_vertex_t);
 
-		Log(NString("Compiling shader vertex : ") + vertexFile);
+	glGenBuffers(1, &m_ibo);
 
-		char const * VertexSourcePointer = VertexShaderCode;
-		VertexShaderCode.Clear();
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_vbo);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_icount * sizeof(mesh_index_t),
+		GL_PVOID(pbuffer), GL_STATIC_DRAW);
 
-		glShaderSource(VertexShaderID, 1, &VertexSourcePointer, NULL);
-		glCompileShader(VertexShaderID);
+	delete[] buffer;
+	return true;
 
-		// Check Vertex Shader
-
-		glGetShaderiv(VertexShaderID, GL_COMPILE_STATUS, &Result);
-		glGetShaderiv(VertexShaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
-
-		if (InfoLogLength > 0) 
-		{
-			Array<char> VertexShaderErrorMessage(InfoLogLength + 1);
-			glGetShaderInfoLog(VertexShaderID, InfoLogLength, NULL, &VertexShaderErrorMessage[0]);
-			if(VertexShaderErrorMessage.SizeArray() != 13) //"No errors.\n" string
-				Error(&VertexShaderErrorMessage[0], 92, false);
-
-		}
-
-		// Compile Fragment Shader
-		Log(NString("Compiling shader fragment : ") + fragmentFile);
-
-		char const * FragmentSourcePointer = FragmentShaderCode;
-		glShaderSource(FragmentShaderID, 1, &FragmentSourcePointer, NULL);
-		glCompileShader(FragmentShaderID);
-
-
-
-		// Check Fragment Shader
-		glGetShaderiv(FragmentShaderID, GL_COMPILE_STATUS, &Result);
-		glGetShaderiv(FragmentShaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
-
-		if (InfoLogLength > 0) 
-		{
-			Array<char> FragmentShaderErrorMessage(InfoLogLength + 1);
-			glGetShaderInfoLog(FragmentShaderID, InfoLogLength, NULL, &FragmentShaderErrorMessage[0]);
-			if (FragmentShaderErrorMessage.SizeArray() != 13) //"No errors.\n" string
-				Error(&FragmentShaderErrorMessage[0], 93, false); 
-
-		}
-
-		// Link the program
-		printf("Linking program\n");
-		GLuint ProgramID = glCreateProgram();
-
-		glAttachShader(ProgramID, VertexShaderID);
-		glAttachShader(ProgramID, FragmentShaderID);
-		glLinkProgram(ProgramID);
-
-
-		// Check the program
-		glGetProgramiv(ProgramID, GL_LINK_STATUS, &Result);
-		glGetProgramiv(ProgramID, GL_INFO_LOG_LENGTH, &InfoLogLength);
-
-		if (InfoLogLength > 0) 
-		{
-			Array<char> ProgramErrorMessage(InfoLogLength + 1);
-			glGetProgramInfoLog(ProgramID, InfoLogLength, NULL, &ProgramErrorMessage[0]);
-			printf("%s\n", &ProgramErrorMessage[0]);
-		}
-
-
-		glDetachShader(ProgramID, VertexShaderID);
-		glDetachShader(ProgramID, FragmentShaderID);
-
-
-		glDeleteShader(VertexShaderID);
-		glDeleteShader(FragmentShaderID);
-
-		return ProgramID;
+}*/
+void NobelLib::Graphics::GLObject::Swap()
+{
+	SwapBuffers(hDC);
 }

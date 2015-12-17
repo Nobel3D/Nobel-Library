@@ -8,26 +8,26 @@ namespace NobelLib
 	{
 		enum NMessageBoxResult 
 		{
-			OK = 1,
-			CANCEL = 2,
-			ABORT = 3,
-			RETRY = 4,
-			IGNORE = 5,
-			YES = 6,
-			NO = 7,
-			TRYAGAIN = 10,
-			CONTINUE = 11
+			ROK = 1,
+			RCANCEL = 2,
+			RABORT = 3,
+			RRETRY = 4,
+			RIGNORE = 5,
+			RYES = 6,
+			RNO = 7,
+			RTRYAGAIN = 10,
+			RCONTINUE = 11
 		};
 		enum NMessageBoxIcon
 		{
-			EXCLAMATION = 0x00000030L,
-			WARNING = 0x00000030L,
-			INFORMATION = 0x00000040L,
-			ASTERISK = 0x00000040L,
-			QUESTION = 0x00000020L,
-			STOP = 0x00000010L,
-			ERROR = 0x00000010L,
-			HAND = 0x00000010L
+			IEXCLAMATION = 0x00000030L,
+			IWARNING = 0x00000030L,
+			IINFORMATION = 0x00000040L,
+			IASTERISK = 0x00000040L,
+			IQUESTION = 0x00000020L,
+			ISTOP = 0x00000010L,
+			IERROR = 0x00000010L,
+			IHAND = 0x00000010L
 		};
 		enum NMessageBoxButton
 		{

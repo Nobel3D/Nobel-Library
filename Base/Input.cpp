@@ -4,6 +4,8 @@ using namespace NobelLib;
 
 KeyBoard::KeyBoard()
 {
+	for (int i = 0; i < NUM_KEYS; i++)
+		xin_bMap[i] = false;
 }
 
 KeyBoard::~KeyBoard()

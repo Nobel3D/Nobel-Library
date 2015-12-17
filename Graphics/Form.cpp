@@ -14,6 +14,7 @@ bool Form::form_bExit;
 Point Form::scr_cPosition;
 RECT Form::WindowRect;
 Input* Form::form_xInput;
+void (*Form::form_Input)();
 ScreenMode Form::scr_nMode;
 
 Form::Form()
@@ -62,7 +63,7 @@ void Form::Destroy()
 	form_bExit = true;
 }
 
-bool Form::createGLWindow(NString title, WNDPROC WinProc)
+bool Form::createGLWindow(NString title, void(*funcInput)())
 {
 	if (form_bActive)
 	{
@@ -73,6 +74,8 @@ bool Form::createGLWindow(NString title, WNDPROC WinProc)
 		int	width = scr_cResolution.scr_iWidth;
 		int	height = scr_cResolution.scr_iHeight;
 		form_sTitle = title;
+		form_xInput = new Input;
+		form_Input = funcInput;
 
 		scr_cPosition = Point(scr_cNative.scr_iWidth / 2 - width / 2, scr_cNative.scr_iHeight / 2 - height / 2);
 
@@ -86,7 +89,7 @@ bool Form::createGLWindow(NString title, WNDPROC WinProc)
 
 		hInst = GetModuleHandle(NULL);							// Grab current instance for window
 		wc.style = CS_OWNDC;									// Own DC for window.
-		wc.lpfnWndProc = (WNDPROC)WinProc;						// WinProc handles messages
+		wc.lpfnWndProc = (WNDPROC)WindowProcess;						// WinProc handles messages
 		wc.cbClsExtra = 0;										// Extra window data
 		wc.cbWndExtra = 0;										// Extra window data
 		wc.hInstance = hInst;									// Copying instance
@@ -242,7 +245,7 @@ bool Form::Initialize()
 	form_bActive = true;
 	scr_nMode = FULLSCREEN; //debug only
 
-	EnumDisplaySettings(NULL, ENUM_CURRENT_SETTINGS, &nativeMode);
+	EnumDisplaySettings(NULL, ENUM_CURRENT_SETTINGS, &nativeMode); //Function intrusive
 	//Auto detect native resolution for your window
 	scr_cNative = Resolution(nativeMode.dmPelsWidth, nativeMode.dmPelsHeight);
 	scr_cResolution = Resolution(nativeMode.dmPelsWidth, nativeMode.dmPelsHeight);
@@ -253,7 +256,7 @@ bool Form::Initialize(Resolution useRes, ScreenMode numMod)
 	form_bActive = true;
 	scr_nMode = numMod; 
 
-	EnumDisplaySettings(NULL, ENUM_CURRENT_SETTINGS, &nativeMode);
+	EnumDisplaySettings(NULL, ENUM_CURRENT_SETTINGS, &nativeMode); //Function intrusive
 	scr_cNative = Resolution(nativeMode.dmPelsWidth, nativeMode.dmPelsHeight);
 	scr_cResolution = useRes;
 	return true;
@@ -275,6 +278,11 @@ void Form::Draw()
 	}
 }
 
+void Form::gl_Clear()
+{
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
 
 void Form::Resize(int w, int h)
 {
@@ -287,7 +295,33 @@ void Form::Resize(int w, int h)
 	WindowRect.bottom = (long)y + h;
 }
 
-int Form::getStatus()
+void Form::Load(void * null)
+{
+}
+
+bool NobelLib::Graphics::Form::winLoop(MSG* msg)
+{
+	if(getStatus())
+	{
+		if (PeekMessage(msg, NULL, 0, 0, PM_REMOVE))
+		{
+			if (msg->message == WM_QUIT)
+			{
+				Destroy();
+				return false;
+			}
+		}
+		else
+		{
+			TranslateMessage(msg);
+			DispatchMessage(msg);
+		}
+		return true;
+	}
+	return false;
+}
+
+RESULT Form::getStatus()
 { //eventually add status return code (appear error n...) like int ForceQuit (int nError)
 	if (form_bExit)
 	{
@@ -296,5 +330,61 @@ int Form::getStatus()
 	else
 	{
 		return 1;
+	}
+}
+
+LRESULT CALLBACK Form::WindowProcess(HWND handle, UINT message, WPARAM wParam, LPARAM lParam)
+{
+
+	switch (message)
+	{
+	case WM_QUIT:
+		return 0;
+	case WM_ACTIVATE:
+		return 0;
+	case WM_CREATE:
+		return 0;
+	case WM_MOUSEMOVE:
+		return 0;
+	case WM_LBUTTONDOWN:
+		return 0;
+	case WM_LBUTTONUP:
+		return 0;
+	case WM_RBUTTONDOWN:
+		return 0;
+	case WM_SIZE:
+		Form::Resize(LOWORD(lParam), HIWORD(lParam));
+		return 0;
+	case WM_GETMINMAXINFO:
+		return 0;
+	case WM_CLOSE:
+		PostQuitMessage(0);
+		return 0;
+	case WM_DESTROY:
+		PostQuitMessage(0);
+		return 0;
+	case WM_KEYDOWN:
+		form_xInput->keyboard.keyDown((BYTE)wParam);
+		form_Input();
+		return 0;
+	case WM_KEYUP:
+		form_xInput->keyboard.keyUp((BYTE)wParam);
+		return 0;
+	case WM_NCLBUTTONDOWN:
+		return 0;
+	case WM_NCLBUTTONUP:
+		return 0;
+	case WM_TIMER:
+		return 0;
+	case WM_EXITSIZEMOVE:
+		return 0;
+	case WM_SETCURSOR:
+		return 0;
+	case WM_CANCELMODE:
+		return 0;
+	case WM_MOUSEWHEEL:
+		return 0;
+	default:
+		return DefWindowProcW(handle, message, wParam, lParam);
 	}
 }

@@ -41,8 +41,8 @@ using namespace NobelLib::Management;
 
 	void Error::errorBox(NString strShow, NString strCap)
 	{
-		Graphics::NMessageBoxResult result = Graphics::NMessageBox::Show(strShow, strCap, Graphics::ButtonABORTRETRYIGNORE, Graphics::EXCLAMATION);
-		if (result == Graphics::ABORT)
+		Graphics::NMessageBoxResult result = Graphics::NMessageBox::Show(strShow, strCap, Graphics::ButtonABORTRETRYIGNORE, Graphics::IEXCLAMATION);
+		if (result == Graphics::RABORT)
 			err_ForceQuit();
 	}
 

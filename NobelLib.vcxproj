@@ -45,7 +45,7 @@
     <IntDir>$(Configuration)\Tmp</IntDir>
     <TargetExt>.lib</TargetExt>
     <ExtensionsToDeleteOnClean>*.cdf;*.cache;*.obj;*.ilk;*.resources;*.tlb;*.tli;*.tlh;*.tmp;*.rsp;*.pgc;*.pgd;*.meta;*.tlog;*.manifest;*.res;*.pch;*.exp;*.idb;*.rep;*.xdc;*.pdb;*_manifest.rc;*.bsc;*.sbr;*.xml;*.metagen;*.bi;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
-    <IncludePath>E:\Users\Luca\Desktop\Programming\Project\Glew\include;$(IncludePath)</IncludePath>
+    <IncludePath>E:\Users\Luca\Desktop\Programming\Project\GLM\glm;E:\Users\Luca\Desktop\Programming\Project\Glew\include;$(IncludePath)</IncludePath>
     <ExecutablePath>E:\Users\Luca\Desktop\Programming\Project\Glew\bin;$(ExecutablePath)</ExecutablePath>
     <LibraryPath>E:\Users\Luca\Desktop\Programming\Project\Glew\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
@@ -102,13 +102,20 @@
     <ClInclude Include="Base\NCScript\NResult.h" />
     <ClInclude Include="Base\NString.h" />
     <ClInclude Include="Definitions.h" />
+    <ClInclude Include="Graphics\Camera.h" />
+    <ClInclude Include="Graphics\Geometric\Lines.h" />
+    <ClInclude Include="Graphics\Geometric\Triangles.h" />
+    <ClInclude Include="Graphics\Matrix4.h" />
     <ClInclude Include="Graphics\NColor.h" />
     <ClInclude Include="Graphics\Form.h" />
     <ClInclude Include="Graphics\NFloat.h" />
     <ClInclude Include="Graphics\NMessageBox.h" />
     <ClInclude Include="Graphics\OpenGL.h" />
     <ClInclude Include="Graphics\Point.h" />
+    <ClInclude Include="Graphics\Render.h" />
+    <ClInclude Include="Graphics\Shader.h" />
     <ClInclude Include="Graphics\Texture.h" />
+    <ClInclude Include="Graphics\Vector4.h" />
     <ClInclude Include="Graphics\VideoMode.h" />
     <ClInclude Include="Management\DateTime.h" />
     <ClInclude Include="Management\Error.h" />
@@ -134,13 +141,20 @@
     <ClCompile Include="Base\NCScript\NError.cpp" />
     <ClCompile Include="Base\NCScript\NResult.cpp" />
     <ClCompile Include="Base\NString.cpp" />
+    <ClCompile Include="Graphics\Camera.cpp" />
+    <ClCompile Include="Graphics\Geometric\Lines.cpp" />
+    <ClCompile Include="Graphics\Geometric\Triangles.cpp" />
+    <ClCompile Include="Graphics\Matrix4.cpp" />
     <ClCompile Include="Graphics\NColor.cpp" />
     <ClCompile Include="Graphics\Form.cpp" />
     <ClCompile Include="Graphics\NFloat.cpp" />
     <ClCompile Include="Graphics\NMessageBox.cpp" />
     <ClCompile Include="Graphics\OpenGL.cpp" />
     <ClCompile Include="Graphics\Point.cpp" />
+    <ClCompile Include="Graphics\Render.cpp" />
+    <ClCompile Include="Graphics\Shader.cpp" />
     <ClCompile Include="Graphics\Texture.cpp" />
+    <ClCompile Include="Graphics\Vector4.cpp" />
     <ClCompile Include="Graphics\VideoMode.cpp" />
     <ClCompile Include="Management\DateTime.cpp" />
     <ClCompile Include="Management\Error.cpp" />

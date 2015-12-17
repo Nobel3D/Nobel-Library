@@ -25,6 +25,10 @@ NFloat::NFloat(double _n)
 {
 	n = float(_n);
 }
+NobelLib::Graphics::NFloat::NFloat(const NFloat & copy)
+{
+	this->n = copy.n;
+}
 float NFloat::getNative()
 {
 	return n;
@@ -48,7 +52,11 @@ float NFloat::getDecimal()
 
 NString NFloat::toString()
 {
-	return NString::fromDouble(this->n);
+	NString str = NString::fromDouble(this->n);
+	if (str[str.getLength()-1] == '.')
+		str.Replace(".", "");
+
+	return str;
 }
 
 NFloat::operator GLfloat()

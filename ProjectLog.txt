@@ -58,3 +58,27 @@ Fixed various bug on text stream (NFile.h)
 Added class Matrix (Matrix.h)
 Fixed various bug on Array class (Array.h)
 Fixed title on form class (Form.h)
+
+/* 26/11/2015 */
+Added class Vector4 (Vector4.h)
+Added class Matrix4 (Matrix4.h)
+Added math definition (StaticMath.h)
+Added convertion function from standard array to Array class (Array.h)
+Added class Shader (Shader.h)
+
+/* 30/11/2015 */
+Added camera class (Camera.h)
+Changed VarRule p to point2d/point3d (VarRule.txt)
+Added projections functions (Camera.h)
+Added texture class (Texture.h)
+
+/* 13/12/2015 */
+Added geometric namespace and Triangles class (Traingles.h)
+Added lines class (Lines.h)
+
+/* 17/12/2015 */
+Added Buffering function (OpenGL.h)
+Added convertion from Standard Array to Manage Array and viceversa (Array.h)
+Added winLoop to Form (Form.h)
+Improved Form class (Form.h)
+Fixed class Input (Input.h)

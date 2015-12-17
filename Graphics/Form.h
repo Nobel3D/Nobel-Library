@@ -21,9 +21,6 @@ namespace NobelLib
 			HINSTANCE hInst;								// current instance	
 			HWND hWnd;
 
-			//Controls
-			static Input* form_xInput;
-
 			//form
 			bool form_bActive;
 			NString form_sTitle;
@@ -35,24 +32,32 @@ namespace NobelLib
 
 			//Screen
 			static ScreenMode scr_nMode; //screen mode 0 = fullscreen, 1=windowed, 2=borderless (programming)
-			Resolution scr_cResolution;
 			Resolution scr_cNative;
 			static Point scr_cPosition;
 			static RECT WindowRect;
+			DEVMODE	nativeMode;
 
 			RESULT initGL();
+			static void(*form_Input)();
 			 
 		public:
+			//Controls
+			static Input* form_xInput;
+
 			Form();
 			~Form();
 
 			bool Initialize();
 			bool Initialize(Resolution useRes, ScreenMode screenMode);
-			bool createGLWindow(NString Title, WNDPROC WinProc);
-			int getStatus();
+			bool createGLWindow(NString Title, void (*funcInput)());
+			static LRESULT CALLBACK WindowProcess(HWND handle, UINT message, WPARAM wParam, LPARAM lParam);
+			RESULT getStatus();
 			void Draw();
+			void gl_Clear();
 			void Destroy();
-			void Resize(int w, int h);
+			static void Resize(int w, int h);
+			void Load(void* null = nullptr);
+			bool winLoop(MSG* msg);
 			//void Background(Texture background);
 		};
 	}

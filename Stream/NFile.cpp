@@ -54,6 +54,11 @@ bool NFile::IsStarted()
 	return Start;
 }
 
+LLINT NFile::getLenght()
+{
+	return ftell(LinkFile);
+}
+
 NString NFile::getModeOpen(OpenMode _Mode)
 {
 	NString TypeOpen = NString();

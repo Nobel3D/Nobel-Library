@@ -27,6 +27,7 @@ namespace NobelLib
 			int Close();
 
 			bool IsStarted();
+			LLINT getLenght();
 
 			int Write();
 			LLINT Read(void* vpGet, LLINT length, LLINT count = 1);

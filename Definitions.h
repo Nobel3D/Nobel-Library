@@ -9,3 +9,8 @@ template<class Type>
 inline Type Max(Type X, Type Y) { return X < Y ? Y : X; }
 template<class Type>
 inline Type Min(Type X, Type Y) { return X < Y ? X : Y; }
+
+template<typename Type, size_t Size>
+size_t getSize(Type(&)[Size]) {
+	return Size;
+}

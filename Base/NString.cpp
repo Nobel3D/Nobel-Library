@@ -221,7 +221,7 @@ NString NString::Replace(const char* str, const char* strReplace)
 			strChangeble = strChangeble.Sub(0, i) + strReplace + strChangeble.Sub( i+strlen(str) );
 		}
 	}
-	return strChangeble;
+	return (*this) = strChangeble;
 }
 
 double NString::toDouble()
@@ -271,7 +271,7 @@ NString NString::Sub(int IndexStart, int IndexLen)
 	Exit.str_Pointer[IndexLen] = '\0';
 	return NString(Exit);
 }
-Array<NString> NString::Split(const char Splitter, Array<NString> &arrayStr)
+Array<NString>& NString::Split(const char Splitter, Array<NString> &arrayStr)
 {
 	NString* strSafe = new NString(*this);
 	arrayStr.Clear();

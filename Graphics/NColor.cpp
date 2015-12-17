@@ -8,3 +8,10 @@ NColor::NColor(NFloat _red, NFloat _green, NFloat _blue)
 	Green = _green;
 	Blue = _blue;
 }
+
+NColor::NColor()
+{
+	Red = 0.0f;
+	Green = 0.0f;
+	Blue = 0.0f;
+}

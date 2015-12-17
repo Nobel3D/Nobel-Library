@@ -17,6 +17,7 @@ namespace NobelLib
 			NFloat Green;
 			NFloat Blue;
 			NColor(NFloat _red, NFloat _green, NFloat _blue);
+			NColor();
 		};
 	}
 }

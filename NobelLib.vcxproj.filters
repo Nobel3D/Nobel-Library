@@ -31,6 +31,9 @@
     <Filter Include="Network">
       <UniqueIdentifier>{af1ce5c7-0b7f-490d-b1aa-35cd9dafaeea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics\Geometric">
+      <UniqueIdentifier>{75b9ace7-3468-4352-85a7-ee98585a3673}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\StaticMath.h">
@@ -135,6 +138,27 @@
     <ClInclude Include="Base\Matrix.h">
       <Filter>Base</Filter>
     </ClInclude>
+    <ClInclude Include="Graphics\Camera.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Matrix4.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Vector4.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Shader.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Geometric\Triangles.h">
+      <Filter>Graphics\Geometric</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Geometric\Lines.h">
+      <Filter>Graphics\Geometric</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Render.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\StaticMath.cpp">
@@ -222,6 +246,27 @@
       <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\Texture.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Camera.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Matrix4.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Vector4.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Shader.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Geometric\Triangles.cpp">
+      <Filter>Graphics\Geometric</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Geometric\Lines.cpp">
+      <Filter>Graphics\Geometric</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Render.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,4 +1,7 @@
 #pragma once
+
+#include "NFloat.h"
+
 namespace NobelLib
 {
 	namespace Graphics
@@ -14,7 +17,7 @@ namespace NobelLib
 			public:
 			int scr_iWidth;
 			int scr_iHeight;
-			int scr_iResolution; //16:9 = 0 - 4:3 = 1
+			NFloat scr_fRatio; //16:9 = 0 - 4:3 = 1
 
 			Resolution() {};
 			Resolution(int w, int h);
